@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@theme {
+  --color-obsidian: #2A2A2A;
+  --color-champagne: #B89C72;
+  --color-alabaster: #FAF9F6;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-playfair), ui-serif, Georgia, serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-alabaster);
+    color: var(--color-obsidian);
+  }
+}
