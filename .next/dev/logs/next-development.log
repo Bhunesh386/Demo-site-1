@@ -1,0 +1,2 @@
+{"timestamp":"00:00:00.801","source":"Server","level":"WARN","message":"⚠ The Edge Runtime is deprecated. You can use the \"nodejs\" runtime instead. Learn more: https://nextjs.org/docs/messages/edge-runtime-deprecated"}
+{"timestamp":"00:00:00.940","source":"Server","level":"LOG","message":""}

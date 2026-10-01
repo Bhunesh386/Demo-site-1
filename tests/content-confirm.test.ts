@@ -3,7 +3,7 @@ import { rooms } from '../src/content/rooms';
 import { siteConfig } from '../src/config/site';
 
 // Helper to recursively search for [CONFIRM]
-function hasConfirmFlag(obj: any): boolean {
+function hasConfirmFlag(obj: unknown): boolean {
   if (typeof obj === 'string') return obj.includes('[CONFIRM]');
   if (Array.isArray(obj)) return obj.some(hasConfirmFlag);
   if (obj !== null && typeof obj === 'object') {
