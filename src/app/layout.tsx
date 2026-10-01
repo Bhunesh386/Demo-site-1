@@ -80,6 +80,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable} scroll-smooth`}>
       <head>
+        <meta name="google-site-verification" content="PASTE_YOUR_COPIED_TOKEN_HERE" />
         {/* Google Analytics Placeholder */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
