@@ -1,136 +1,31 @@
-'use client';
+// Server Component — owns metadata for this route.
+// The interactive parallax hero is isolated in HomeClient.
+import type { Metadata } from "next";
+import { HomeClient } from "./HomeClient";
 
-import { motion, useScroll, useTransform } from 'framer-motion';
-import Link from 'next/link';
-import Image from 'next/image';
-import { useRef } from 'react';
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 } // Faster stagger on mobile
-  }
-};
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.7 } } // Slightly faster fade
+export const metadata: Metadata = {
+  title: "Heritage Boutique Hotel in Jodhpur's Blue City",
+  description:
+    "Hotel Ratnawali is steps from Jodhpur's Clock Tower — a quiet sanctuary blending Marwari heritage with modern comfort. Book your stay in the Blue City today.",
+  alternates: {
+    canonical: "https://hotelratnawalijodhpur.com",
+  },
+  openGraph: {
+    title: "Hotel Ratnawali Jodhpur — A Quiet Sanctuary in the Blue City",
+    description:
+      "Steps from Jodhpur's iconic Clock Tower, Hotel Ratnawali offers heritage-inspired rooms, Marwari hospitality, and panoramic views of the Blue City.",
+    url: "https://hotelratnawalijodhpur.com",
+    images: [
+      {
+        url: "/images/hero-main.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Hotel Ratnawali Jodhpur — heritage boutique hotel exterior with Blue City view",
+      },
+    ],
+  },
 };
 
 export default function Home() {
-  const heroRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"]
-  });
-  
-  const yBackground = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const opacityBackground = useTransform(scrollYProgress, [0, 1], [1, 0.4]);
-
-  return (
-    <div className="flex flex-col min-h-screen bg-alabaster">
-      {/* Hero Section */}
-      <section ref={heroRef} className="relative h-[70vh] md:h-[95vh] flex items-center overflow-hidden bg-obsidian">
-        <motion.div 
-          style={{ y: yBackground, opacity: opacityBackground }}
-          className="absolute inset-0 z-0 origin-top"
-        >
-          <Image 
-            src="/images/hero-main.jpg" 
-            alt="Luxury Hotel Exterior" 
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent opacity-60"></div>
-        </motion.div>
-        
-        <div className="container mx-auto px-4 md:px-6 relative z-10 pt-16 md:pt-20">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            animate="show"
-            className="max-w-2xl text-alabaster"
-          >
-            <motion.p variants={fadeUp} className="font-sans text-[10px] md:text-xs uppercase tracking-[0.3em] text-champagne mb-4 md:mb-6 font-medium">
-              Welcome to Jodhpur
-            </motion.p>
-            <motion.h1 variants={fadeUp} className="font-serif text-5xl md:text-7xl lg:text-8xl leading-[1.1] mb-6 md:mb-8 drop-shadow-lg font-normal">
-              A Quiet <br/><span className="italic text-champagne">Sanctuary.</span>
-            </motion.h1>
-            <motion.p variants={fadeUp} className="font-sans text-base md:text-xl font-light mb-8 md:mb-12 opacity-80 max-w-lg leading-relaxed text-alabaster/90">
-              Experience the perfect blend of modern sophistication and timeless elegance in the heart of the blue city.
-            </motion.p>
-            <motion.div variants={fadeUp}>
-              <Link 
-                href="/rooms"
-                className="relative inline-flex items-center justify-center px-8 md:px-10 py-4 md:py-5 min-h-[44px] min-w-[44px] bg-transparent border border-champagne/50 text-champagne font-sans font-medium uppercase tracking-widest text-xs md:hover:bg-champagne md:hover:text-alabaster transition-all duration-700 ease-out shadow-[0_0_0_rgba(184,156,114,0)] md:hover:shadow-[0_4px_30px_rgba(184,156,114,0.3)] group overflow-hidden"
-              >
-                <span className="relative z-10">Reserve Your Stay</span>
-              </Link>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Feature Highlights */}
-      <section className="py-24 md:py-40 bg-alabaster relative">
-        <div className="absolute left-0 top-1/4 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-champagne/5 rounded-full blur-[80px] md:blur-[120px] -z-10 pointer-events-none"></div>
-        
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24 lg:gap-32 items-center">
-            <motion.div 
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, margin: "-50px" }}
-              variants={staggerContainer}
-            >
-              <motion.h2 variants={fadeUp} className="font-serif text-4xl md:text-5xl lg:text-6xl text-obsidian mb-6 md:mb-10 leading-tight">
-                Redefining the <br /><span className="italic font-light text-champagne">Hospitality</span> Experience
-              </motion.h2>
-              <motion.p variants={fadeUp} className="font-sans text-obsidian/70 mb-8 md:mb-12 leading-relaxed text-base md:text-lg font-light">
-                Our approach to hospitality is rooted in minimal design, maximal comfort, and understated luxury. Every corner of our property is meticulously curated to foster relaxation and inspiration.
-              </motion.p>
-              <motion.div variants={fadeUp}>
-                <Link 
-                  href="/about"
-                  className="group inline-flex items-center min-h-[44px] font-sans text-champagne font-medium uppercase tracking-widest text-xs md:hover:text-obsidian transition-colors duration-500"
-                >
-                  <span className="relative pb-1">
-                    Discover Our Story
-                    <span className="absolute bottom-0 left-0 w-full h-[1px] bg-champagne scale-x-100 md:group-hover:scale-x-0 transition-transform origin-right duration-500"></span>
-                    <span className="absolute bottom-0 left-0 w-full h-[1px] bg-obsidian scale-x-0 md:group-hover:scale-x-100 transition-transform origin-left duration-500"></span>
-                  </span>
-                  <span className="ml-4 transform md:group-hover:translate-x-2 transition-transform duration-500">→</span>
-                </Link>
-              </motion.div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, scale: 1.05, filter: 'blur(10px)' }}
-              whileInView={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 1.2 }}
-              className="relative h-[50vh] md:h-[700px] w-full group"
-            >
-              <div className="absolute inset-0 overflow-hidden shadow-2xl shadow-obsidian/10 transition-all duration-700 md:group-hover:shadow-champagne/20 z-10 rounded-sm">
-                <Image 
-                  src="/images/amenity-spa.jpg" 
-                  alt="Minimalist Spa" 
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-[1.5s] ease-out md:group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-obsidian/10 md:group-hover:bg-transparent transition-colors duration-700"></div>
-              </div>
-              {/* Decorative accent frame */}
-              <div className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 w-full h-full border border-champagne/30 -z-10 rounded-sm"></div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
+  return <HomeClient />;
 }

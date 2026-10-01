@@ -27,20 +27,20 @@ export function BookingWidget({ roomTypeSlug, roomName, price }: { roomTypeSlug:
   const disabledDays = { before: new Date() };
 
   return (
-    <div id="booking" className="bg-chalk p-6 border border-indigo/10 mt-12">
-      <h3 className="font-serif text-2xl text-indigo mb-6">Request Reservation</h3>
+    <div id="booking" className="bg-alabaster p-6 border border-obsidian/10 mt-12 rounded-sm shadow-md">
+      <h3 className="font-serif text-2xl text-obsidian mb-6">Request Reservation</h3>
       
       <div className="mb-6">
-        <label className="block font-sans text-sm uppercase tracking-widest text-indigo/60 mb-2">Select Dates</label>
-        <div className="bg-white p-4 border border-indigo/10 overflow-auto flex justify-center">
+        <label className="block font-sans text-sm uppercase tracking-widest text-obsidian/60 mb-2">Select Dates</label>
+        <div className="bg-white p-4 border border-obsidian/10 overflow-auto flex justify-center rounded-sm">
           <DayPicker
             mode="range"
             selected={range}
             onSelect={setRange}
             disabled={disabledDays}
-            className="font-sans text-indigo"
+            className="font-sans text-obsidian"
             modifiersStyles={{
-              selected: { backgroundColor: 'var(--color-sandstone)', color: 'var(--color-indigo)' }
+              selected: { backgroundColor: 'var(--color-champagne)', color: 'var(--color-alabaster)' }
             }}
           />
         </div>
@@ -48,23 +48,23 @@ export function BookingWidget({ roomTypeSlug, roomName, price }: { roomTypeSlug:
 
       <div className="flex gap-4 mb-8">
         <div className="flex-1">
-          <label className="block font-sans text-sm uppercase tracking-widest text-indigo/60 mb-2">Adults</label>
+          <label className="block font-sans text-sm uppercase tracking-widest text-obsidian/60 mb-2">Adults</label>
           <input 
             type="number" 
             min="1" max="4" 
             value={adults} 
             onChange={(e) => setAdults(parseInt(e.target.value) || 1)}
-            className="w-full border border-indigo/20 p-2 font-sans bg-transparent min-h-[44px]"
+            className="w-full border border-obsidian/20 p-2 font-sans bg-transparent min-h-[44px] rounded-none focus:border-champagne focus:outline-none transition-colors"
           />
         </div>
         <div className="flex-1">
-          <label className="block font-sans text-sm uppercase tracking-widest text-indigo/60 mb-2">Children</label>
+          <label className="block font-sans text-sm uppercase tracking-widest text-obsidian/60 mb-2">Children</label>
           <input 
             type="number" 
             min="0" max="4" 
             value={children} 
             onChange={(e) => setChildren(parseInt(e.target.value) || 0)}
-            className="w-full border border-indigo/20 p-2 font-sans bg-transparent min-h-[44px]"
+            className="w-full border border-obsidian/20 p-2 font-sans bg-transparent min-h-[44px] rounded-none focus:border-champagne focus:outline-none transition-colors"
           />
         </div>
       </div>
@@ -72,7 +72,7 @@ export function BookingWidget({ roomTypeSlug, roomName, price }: { roomTypeSlug:
       <button 
         onClick={handleBook}
         disabled={!range?.from || !range?.to}
-        className="w-full min-h-[44px] px-6 py-4 bg-indigo text-chalk md:hover:bg-indigo/90 transition-colors font-sans text-sm tracking-widest uppercase disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full min-h-[44px] px-6 py-4 bg-obsidian text-alabaster md:hover:bg-champagne transition-colors duration-300 font-sans text-sm tracking-widest uppercase disabled:opacity-50 disabled:cursor-not-allowed rounded-sm shadow-sm md:hover:shadow-champagne/30"
       >
         Continue to WhatsApp
       </button>
