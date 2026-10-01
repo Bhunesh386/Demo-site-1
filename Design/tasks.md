@@ -71,15 +71,15 @@
 | T-010 | `taste`, `perf-audit`, `ponytail` | Implemented Framer Motion parallax, scroll unblur image reveals, and sliding route transitions. |
 
 ### Phase 5: Technical SEO & Core Web Vitals Sprint
-- [ ] **T-011**: Crawl Architecture — Sitemap, robots.txt, canonical tags, and metadata.
+- [x] **T-011**: Crawl Architecture — Sitemap, robots.txt, canonical tags, and metadata.
   - *Acceptance Criteria*: Complete `sitemap.ts` covers all routes (home, about, rooms, contact, room slugs). `robots.ts` (code-based) is authoritative. Every page exports `generateMetadata` with canonical, title, description, and OG tags. Layout-level `metadataBase` set to production URL.
   - *Skills*: `ponytail`, `git-hygiene`
   - *Commit*: `seo: crawl architecture — sitemap, robots, canonical, and metadata [T-011]`
-- [ ] **T-012**: On-Page SEO — H1 hierarchy, JSON-LD structured data, breadcrumbs, alt text, and E-E-A-T.
+- [x] **T-012**: On-Page SEO — H1 hierarchy, JSON-LD structured data, breadcrumbs, alt text, and E-E-A-T.
   - *Acceptance Criteria*: Single `<h1>` per page. Hotel `Organization` + `LodgingBusiness` JSON-LD on home. `Hotel` + `HotelRoom` JSON-LD on room pages. `FAQPage` JSON-LD on rooms index & contact. Breadcrumb nav on inner pages. Descriptive `alt` on every image. E-E-A-T author bios added to About page with real titles and a brief bio paragraph.
   - *Skills*: `ponytail`, `git-hygiene`
   - *Commit*: `seo: on-page — JSON-LD schema, breadcrumbs, alt text, E-E-A-T bios [T-012]`
-- [ ] **T-013**: Core Web Vitals — LCP, CLS, rendering strategy.
+- [x] **T-013**: Core Web Vitals — LCP, CLS, rendering strategy.
   - *Acceptance Criteria*: All public pages are SSG or Server Components (no unnecessary `use client` on page shells). Hero images use `priority` + explicit `sizes`. All `fill` images are in explicitly-sized containers. `<Image>` used site-wide (zero raw `<img>` tags). Rooms detail page is a true RSC with `generateStaticParams`.
   - *Skills*: `perf-audit`, `ponytail`, `git-hygiene`
   - *Commit*: `perf: core web vitals — SSG rendering, image priority, CLS fixes [T-013]`
