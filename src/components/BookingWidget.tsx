@@ -54,7 +54,7 @@ export function BookingWidget({ roomTypeSlug, roomName, price }: { roomTypeSlug:
             min="1" max="4" 
             value={adults} 
             onChange={(e) => setAdults(parseInt(e.target.value) || 1)}
-            className="w-full border border-indigo/20 p-2 font-sans bg-transparent"
+            className="w-full border border-indigo/20 p-2 font-sans bg-transparent min-h-[44px]"
           />
         </div>
         <div className="flex-1">
@@ -64,7 +64,7 @@ export function BookingWidget({ roomTypeSlug, roomName, price }: { roomTypeSlug:
             min="0" max="4" 
             value={children} 
             onChange={(e) => setChildren(parseInt(e.target.value) || 0)}
-            className="w-full border border-indigo/20 p-2 font-sans bg-transparent"
+            className="w-full border border-indigo/20 p-2 font-sans bg-transparent min-h-[44px]"
           />
         </div>
       </div>
@@ -72,7 +72,7 @@ export function BookingWidget({ roomTypeSlug, roomName, price }: { roomTypeSlug:
       <button 
         onClick={handleBook}
         disabled={!range?.from || !range?.to}
-        className="w-full px-6 py-4 bg-indigo text-chalk hover:bg-indigo/90 transition-colors font-sans text-sm tracking-widest uppercase disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full min-h-[44px] px-6 py-4 bg-indigo text-chalk md:hover:bg-indigo/90 transition-colors font-sans text-sm tracking-widest uppercase disabled:opacity-50 disabled:cursor-not-allowed"
       >
         Continue to WhatsApp
       </button>

@@ -21,35 +21,35 @@ export default async function RoomPage({ params }: { params: Promise<{ slug: str
 
   return (
     <div className="pt-24 pb-24 container mx-auto px-4 max-w-4xl">
-      <Link href="/#rooms" className="font-sans text-sm tracking-widest uppercase text-indigo/60 hover:text-indigo mb-8 inline-block">
+      <Link href="/#rooms" className="font-sans text-xs md:text-sm tracking-widest uppercase text-indigo/60 md:hover:text-indigo mb-6 md:mb-8 inline-flex items-center min-h-[44px]">
         ← Back to all rooms
       </Link>
       
-      <div className="h-96 bg-indigo/5 relative overflow-hidden mb-12 flex items-center justify-center border border-indigo/10">
+      <div className="h-[40vh] md:h-96 bg-indigo/5 relative overflow-hidden mb-8 md:mb-12 flex items-center justify-center border border-indigo/10">
         <span className="font-sans text-indigo/30 uppercase tracking-widest">{room.name} Image</span>
       </div>
 
-      <div className="flex flex-col md:flex-row justify-between items-start gap-12">
-        <div className="md:w-2/3">
-          <h1 className="font-serif text-5xl text-indigo mb-6">{room.name}</h1>
-          <p className="font-sans text-xl font-light text-indigo/80 mb-10 leading-relaxed">
+      <div className="flex flex-col md:flex-row justify-between items-start gap-8 md:gap-12">
+        <div className="w-full md:w-2/3">
+          <h1 className="font-serif text-3xl md:text-5xl text-indigo mb-4 md:mb-6">{room.name}</h1>
+          <p className="font-sans text-base md:text-xl font-light text-indigo/80 mb-8 md:mb-10 leading-relaxed">
             {room.description}
           </p>
           
-          <h2 className="font-sans text-lg uppercase tracking-widest text-sandstone mb-4">Features</h2>
-          <ul className="grid grid-cols-2 gap-4 mb-10">
+          <h2 className="font-sans text-base md:text-lg uppercase tracking-widest text-sandstone mb-4">Features</h2>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 mb-10">
             {room.features.map(f => (
-              <li key={f} className="font-sans text-indigo/80 flex items-center before:content-[''] before:block before:w-1.5 before:h-1.5 before:bg-sandstone before:mr-3">
+              <li key={f} className="font-sans text-sm md:text-base text-indigo/80 flex items-center before:content-[''] before:block before:w-1.5 before:h-1.5 before:bg-sandstone before:mr-3">
                 {f}
               </li>
             ))}
           </ul>
         </div>
         
-        <div className="md:w-1/3 sticky top-24">
-          <div className="bg-chalk p-8 border border-indigo/10 text-center">
-            <span className="block font-sans text-4xl text-indigo mb-2">₹{priceINR}</span>
-            <span className="block font-sans text-xs text-indigo/60 uppercase tracking-widest">+ taxes / night</span>
+        <div className="w-full md:w-1/3 md:sticky md:top-24">
+          <div className="bg-chalk p-6 md:p-8 border border-indigo/10 text-center">
+            <span className="block font-sans text-3xl md:text-4xl text-indigo mb-2">₹{priceINR}</span>
+            <span className="block font-sans text-[10px] md:text-xs text-indigo/60 uppercase tracking-widest">+ taxes / night</span>
           </div>
           <BookingWidget roomTypeSlug={room.slug} roomName={room.name} price={room.basePrice} />
         </div>
