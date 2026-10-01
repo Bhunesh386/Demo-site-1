@@ -17,12 +17,15 @@ export function Footer() {
           </ul>
         </div>
         <div className="flex flex-col items-center md:items-start">
-          <h5 className="font-sans text-xs md:text-sm uppercase tracking-widest text-champagne mb-4 mt-4 md:mt-0">Contact</h5>
-          <address className="not-italic font-sans text-sm text-alabaster/70 space-y-2">
-            <p>149–150, Nai Sarak</p>
-            <p>Jodhpur, Rajasthan 342001</p>
-            <p className="pt-2"><a href="tel:+919929040000" className="flex items-center justify-center md:justify-start min-h-[44px] md:hover:text-champagne transition-colors">+91 99290-40000</a></p>
-          </address>
+          <h5 className="font-sans text-xs md:text-sm uppercase tracking-widest text-champagne mb-4 mt-4 md:mt-0">Contact Us</h5>
+          <div className="not-italic font-sans text-sm text-alabaster/70 space-y-2" itemScope itemType="https://schema.org/LocalBusiness">
+            <span itemProp="name" className="sr-only">Hotel Ratnawali Jodhpur</span>
+            <div itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
+              <p itemProp="streetAddress">149–150, Nai Sarak</p>
+              <p><span itemProp="addressLocality">Jodhpur</span>, <span itemProp="addressRegion">Rajasthan</span> <span itemProp="postalCode">342001</span></p>
+            </div>
+            <p className="pt-2"><a href="tel:+919929040000" itemProp="telephone" className="flex items-center justify-center md:justify-start min-h-[44px] md:hover:text-champagne transition-colors">+91 99290-40000</a></p>
+          </div>
         </div>
       </div>
     </footer>

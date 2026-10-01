@@ -4,16 +4,16 @@ import type { Metadata } from "next";
 import { HomeClient } from "./HomeClient";
 
 export const metadata: Metadata = {
-  title: "Heritage Boutique Hotel in Jodhpur's Blue City",
+  title: "Hotel Ratnawali Jodhpur | Heritage Boutique Hotel near Clock Tower",
   description:
-    "Hotel Ratnawali is steps from Jodhpur's Clock Tower — a quiet sanctuary blending Marwari heritage with modern comfort. Book your stay in the Blue City today.",
+    "Experience the finest Marwari hospitality at Hotel Ratnawali, a premium heritage boutique hotel located in the heart of Jodhpur's Blue City. Steps from the iconic Clock Tower, offering luxury rooms, panoramic fort views, and modern amenities.",
   alternates: {
     canonical: "https://hotelratnawalijodhpur.com",
   },
   openGraph: {
-    title: "Hotel Ratnawali Jodhpur — A Quiet Sanctuary in the Blue City",
+    title: "Hotel Ratnawali Jodhpur | Heritage Boutique Hotel near Clock Tower",
     description:
-      "Steps from Jodhpur's iconic Clock Tower, Hotel Ratnawali offers heritage-inspired rooms, Marwari hospitality, and panoramic views of the Blue City.",
+      "Experience the finest Marwari hospitality at Hotel Ratnawali, a premium heritage boutique hotel located in the heart of Jodhpur's Blue City. Steps from the iconic Clock Tower, offering luxury rooms, panoramic fort views, and modern amenities.",
     url: "https://hotelratnawalijodhpur.com",
     images: [
       {

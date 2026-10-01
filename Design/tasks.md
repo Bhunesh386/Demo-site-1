@@ -90,3 +90,17 @@
 | T-011 | `ponytail`, `git-hygiene` | Extended sitemap to all routes; converted robots to code-based; added metadataBase + per-page canonical/OG metadata. |
 | T-012 | `ponytail`, `git-hygiene` | Injected JSON-LD (Organization, LodgingBusiness, HotelRoom, FAQPage); breadcrumb nav; descriptive alt text; E-E-A-T bios. |
 | T-013 | `perf-audit`, `ponytail`, `git-hygiene` | Converted page shells to RSC where possible; enforced priority on LCP images; verified no raw img tags. |
+
+### Phase 6: Post-Audit SEO Refinements
+- [x] **T-014**: Content & Headings — Expand title tags, increase text content on sparse pages, and restructure with semantic H2/H3 tags and keywords.
+  - *Acceptance Criteria*: Titles are longer and more descriptive. Home/About pages have more detailed hotel descriptions. Semantic H2/H3 used for sections. Clean internal URLs verified.
+  - *Skills*: `ponytail`, `git-hygiene`
+  - *Commit*: `seo: expand content, titles, and semantic headers [T-014]`
+- [x] **T-015**: Local SEO & Tracking — Footer address/phone, Facebook link, GA & FB Pixel scripts.
+  - *Acceptance Criteria*: Footer contains NAP (Name, Address, Phone) and FB link. Root layout includes Google Analytics and FB Pixel placeholder scripts (deferred). Verify Identity/LocalBusiness schema has phone/address.
+  - *Skills*: `ponytail`, `git-hygiene`
+  - *Commit*: `seo: add footer NAP, social links, and tracking scripts [T-015]`
+- [x] **T-016**: Code Cleanliness & DNS Guide — Remove inline styles, create DNS guide.
+  - *Acceptance Criteria*: All components scanned for inline `style={{}}` and replaced with Tailwind. `DNS-Mail-Records-Guide.md` created in root for SPF/DMARC.
+  - *Skills*: `ponytail`, `perf-audit`, `git-hygiene`
+  - *Commit*: `refactor: replace inline styles and add DNS guide [T-016]`

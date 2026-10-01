@@ -210,6 +210,45 @@ export function HomeClient() {
             </div>
           </div>
         </section>
+
+        {/* ── Location & Heritage Content (SEO Boost) ── */}
+        <section className="py-24 md:py-32 bg-obsidian text-alabaster relative" aria-label="Location and Heritage">
+          <div className="container mx-auto px-4 md:px-6">
+            <motion.div
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: '-50px' }}
+              variants={staggerContainer}
+              className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24"
+            >
+              <div>
+                <motion.h2 variants={fadeUp} className="font-serif text-3xl md:text-5xl mb-6 leading-tight">
+                  A Heritage Hotel in the Heart of <br className="hidden md:block"/>
+                  <span className="italic text-champagne font-light">Jodhpur's Blue City</span>
+                </motion.h2>
+                <motion.p variants={fadeUp} className="font-sans text-alabaster/80 mb-6 leading-relaxed font-light">
+                  Nestled comfortably on Nai Sarak, Hotel Ratnawali offers unparalleled access to Jodhpur's most iconic landmarks. As a premier heritage boutique hotel, we provide a tranquil retreat from the bustling city streets, while keeping you within a short stroll of the magnificent Clock Tower (Ghanta Ghar) and the vibrant Sardar Market.
+                </motion.p>
+                <motion.h3 variants={fadeUp} className="font-sans text-lg text-champagne uppercase tracking-widest mb-4 mt-10">
+                  Authentic Rajasthani Architecture
+                </motion.h3>
+                <motion.p variants={fadeUp} className="font-sans text-alabaster/80 mb-6 leading-relaxed font-light">
+                  Our property features intricately carved sandstone jharokhas, traditional Marwari design motifs, and sustainable modern luxury. Whether you are exploring the towering Mehrangarh Fort or enjoying our rooftop amenities, the essence of Rajasthan is woven into every aspect of your stay.
+                </motion.p>
+              </div>
+              <div className="flex flex-col justify-center space-y-8 border-l border-alabaster/10 pl-8 md:pl-12">
+                <motion.div variants={fadeUp}>
+                  <h3 className="font-serif text-2xl mb-2 text-champagne">Premium Accommodations</h3>
+                  <p className="font-sans font-light text-alabaster/70">From our thoughtfully appointed Deluxe Rooms to the expansive Ratnawali Royal Suite, every space is designed for absolute comfort and quiet luxury.</p>
+                </motion.div>
+                <motion.div variants={fadeUp}>
+                  <h3 className="font-serif text-2xl mb-2 text-champagne">Central Jodhpur Location</h3>
+                  <p className="font-sans font-light text-alabaster/70">Located at 149-150 Nai Sarak, we are perfectly positioned for travellers looking to discover the rich history, textiles, and cuisine of Jodhpur.</p>
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
       </div>
     </>
   );
