@@ -21,6 +21,7 @@ import {
   useCallback,
 } from 'react';
 import Image from 'next/image';
+import { twMerge } from 'tailwind-merge';
 import type { RoomImage } from '@/data/images';
 import { getWrappedIndex, shouldAutoAdvance } from '@/utils/slideshowLogic';
 
@@ -109,10 +110,15 @@ export function RoomGallery({
     touchStartX.current = null;
   };
 
+  const [failedImages, setFailedImages] = useState<Set<number>>(new Set());
+
+  // Base64 encoded 1x1 SVG with beige color #E9DFCE
+  const blurDataURL = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxIiBoZWlnaHQ9IjEiPjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNFOURGQ0UiLz48L3N2Zz4=';
+
   return (
     <div
       ref={containerRef}
-      className={`relative overflow-hidden ${className}`}
+      className={twMerge('relative overflow-hidden w-full h-full bg-[var(--color-band)]', className)}
       onMouseEnter={() => showControls && setPaused(true)}
       onMouseLeave={() => showControls && setPaused(false)}
       onTouchStart={showControls ? onTouchStart : undefined}
@@ -120,6 +126,8 @@ export function RoomGallery({
     >
       {/* Images */}
       {images.map((img, i) => {
+        if (failedImages.has(i)) return null;
+        
         const isActive = i === current;
         return (
           <div
@@ -142,6 +150,18 @@ export function RoomGallery({
               loading={i === 0 ? 'eager' : 'lazy'}
               sizes={sizes}
               className="object-cover"
+              placeholder="blur"
+              blurDataURL={blurDataURL}
+              onError={() => {
+                setFailedImages(prev => {
+                  const next = new Set(prev);
+                  next.add(i);
+                  return next;
+                });
+                if (isActive) {
+                  advance();
+                }
+              }}
             />
           </div>
         );
