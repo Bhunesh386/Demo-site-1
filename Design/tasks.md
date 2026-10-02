@@ -144,7 +144,7 @@
     ]
     ```
 
-### Phase 2: The Search & Availability Widget (UI)
+### Phase 2: The Search & Availability Widget (UI) (Completed)
 - **Date Selection:** 
   - Build a custom `DatePicker` component styled with Tailwind, leveraging a lightweight library like `react-day-picker` or `date-fns` for logic.
   - **Constraints:** Enforce minimum 1-night stay, block all past dates, and prevent check-out dates from preceding check-in dates.
@@ -153,7 +153,7 @@
 - **Action:** 
   - A prominent "Check Availability" CTA button that evaluates the inputs and smoothly transitions the view to display available rooms.
 
-### Phase 3: Room Selection Interface (UI)
+### Phase 3: Room Selection Interface (UI) (Completed)
 - **Layout:** 
   - Design a responsive vertical list (mobile) and grid/list hybrid (desktop) to display the mock rooms that meet the search criteria.
 - **Card Details:** 
