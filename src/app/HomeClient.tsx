@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRef } from 'react';
@@ -164,10 +164,10 @@ export function HomeClient() {
               <div>
                 <motion.h2 variants={fadeUp} className="font-serif text-3xl md:text-5xl mb-6 leading-tight">
                   A Heritage Hotel in the Heart of <br className="hidden md:block"/>
-                  <span className="italic text-champagne font-light">Jodhpur's Blue City</span>
+                  <span className="italic text-champagne font-light">Jodhpur&apos;s Blue City</span>
                 </motion.h2>
                 <motion.p variants={fadeUp} className="font-sans text-alabaster/80 mb-6 leading-relaxed font-light">
-                  Nestled comfortably on Nai Sarak, Hotel Ratnawali offers unparalleled access to Jodhpur's most iconic landmarks. As a premier heritage boutique hotel, we provide a tranquil retreat from the bustling city streets, while keeping you within a short stroll of the magnificent Clock Tower (Ghanta Ghar) and the vibrant Sardar Market.
+                  Nestled comfortably on Nai Sarak, Hotel Ratnawali offers unparalleled access to Jodhpur&apos;s most iconic landmarks. As a premier heritage boutique hotel, we provide a tranquil retreat from the bustling city streets, while keeping you within a short stroll of the magnificent Clock Tower (Ghanta Ghar) and the vibrant Sardar Market.
                 </motion.p>
                 <motion.h3 variants={fadeUp} className="font-sans text-lg text-champagne uppercase tracking-widest mb-4 mt-10">
                   Authentic Rajasthani Architecture

@@ -24,7 +24,7 @@ export const heroSlides: HeroSlide[] = [
     src: '/images/main background/c10fb8c7cdf77827d2c4281fe9c2e6b3.jpg',
     headline: 'A Quiet Sanctuary.',
     subtext:
-      'Steps from Jodhpur's Clock Tower, where Marwari warmth meets modern calm.',
+      "Steps from Jodhpur's Clock Tower, where Marwari warmth meets modern calm.",
     alt: 'Grand colonial atrium of Hotel Ratnawali — warm light, arched skylights and palm garden in the heart of Jodhpur',
     width: 1200,
     height: 675,
@@ -170,7 +170,7 @@ export const contactLocationImage = {
 
 export const homeFeatureImage = {
   src: '/images/amenities/7b94aef7136b22d2304d8dcfe5866819.jpg',
-  alt: 'Hotel Ratnawali's attentive service — artful hospitality rooted in Marwari tradition',
+  alt: "Hotel Ratnawali's attentive service — artful hospitality rooted in Marwari tradition",
   width: 1199,
   height: 1799,
 };

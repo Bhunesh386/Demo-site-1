@@ -34,7 +34,7 @@ export function ScrollReveal({
   as: Tag = 'div',
   threshold = 0.1,
 }: ScrollRevealProps) {
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const el = ref.current;
@@ -43,7 +43,6 @@ export function ScrollReveal({
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          // Apply delay via inline style so we don't need dynamic Tailwind classes
           el.style.transitionDelay = delay > 0 ? `${delay}ms` : '';
           el.classList.add('is-visible');
           observer.unobserve(el);
@@ -56,10 +55,16 @@ export function ScrollReveal({
     return () => observer.disconnect();
   }, [delay, threshold]);
 
+  // Cast is necessary because `as` allows any ElementType but ref expects HTMLDivElement.
+  // In practice users pass block-level HTML tags (section, article, h2, p) which are all
+  // HTMLDivElement-compatible for the IntersectionObserver usage we need.
+  const TagTyped = Tag as React.ElementType;
   return (
-    // @ts-expect-error — generic tag ref typing
-    <Tag ref={ref} className={`scroll-reveal ${className}`}>
+    <TagTyped
+      ref={ref as React.Ref<HTMLDivElement>}
+      className={`scroll-reveal ${className}`}
+    >
       {children}
-    </Tag>
+    </TagTyped>
   );
 }

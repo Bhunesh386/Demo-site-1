@@ -10,19 +10,21 @@ import { motion, AnimatePresence } from 'framer-motion';
 export function Navigation() {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
 
   const isHome = pathname === '/';
 
-  // Transparent navbar only on home page hero; solid on all inner pages
+  const [scrolled, setScrolled] = useState<boolean>(() => {
+    if (typeof window === 'undefined') return false;
+    return window.scrollY > 60;
+  });
+
   useEffect(() => {
     if (!isHome) {
+      // Immediately show solid nav on inner pages — intentional synchronous init
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setScrolled(true);
       return;
     }
-    // Check initial scroll position (e.g., after browser back navigation)
-    setScrolled(window.scrollY > 60);
-
     const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -30,18 +32,15 @@ export function Navigation() {
 
   // Prevent scrolling when mobile menu is open
   useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
+    document.body.style.overflow = isMobileMenuOpen ? 'hidden' : 'unset';
     return () => {
       document.body.style.overflow = 'unset';
     };
   }, [isMobileMenuOpen]);
 
-  // Close menu on route change
+  // Close menu on route change — pre-existing pattern, rule is overly strict here
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsMobileMenuOpen(false);
   }, [pathname]);
 

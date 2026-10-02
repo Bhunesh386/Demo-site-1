@@ -26,10 +26,13 @@ const INTERVAL_MS = 6000;
 const CROSSFADE_MS = 1200;
 
 function usePrefersReducedMotion(): boolean {
-  const [reduced, setReduced] = useState(false);
+  const [reduced, setReduced] = useState<boolean>(() => {
+    // useState lazy initializer runs on client; safe to call window here
+    if (typeof window === 'undefined') return false;
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  });
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setReduced(mq.matches);
     const handler = (e: MediaQueryListEvent) => setReduced(e.matches);
     mq.addEventListener('change', handler);
     return () => mq.removeEventListener('change', handler);
@@ -91,7 +94,11 @@ export function HeroSlideshow() {
     if (touchStartX.current === null) return;
     const delta = touchStartX.current - e.changedTouches[0].clientX;
     if (Math.abs(delta) > 40) {
-      delta > 0 ? go(current + 1) : go(current - 1);
+      if (delta > 0) {
+        go(current + 1);
+      } else {
+        go(current - 1);
+      }
     }
     touchStartX.current = null;
   };

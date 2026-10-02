@@ -44,17 +44,20 @@ export function RoomGallery({
   const [current, setCurrent] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [paused, setPaused] = useState(false);
-  const [reducedMotion, setReducedMotion] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const touchStartX = useRef<number | null>(null);
 
   const total = images.length;
 
-  // Detect reduced-motion preference
+  // Detect reduced-motion preference using lazy initializer
+  const [reducedMotion, setReducedMotion] = useState<boolean>(() => {
+    if (typeof window === 'undefined') return false;
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  });
+
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setReducedMotion(mq.matches);
     const handler = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
     mq.addEventListener('change', handler);
     return () => mq.removeEventListener('change', handler);
@@ -96,7 +99,11 @@ export function RoomGallery({
     if (touchStartX.current === null) return;
     const delta = touchStartX.current - e.changedTouches[0].clientX;
     if (Math.abs(delta) > 40) {
-      delta > 0 ? go(current + 1) : go(current - 1);
+      if (delta > 0) {
+        go(current + 1);
+      } else {
+        go(current - 1);
+      }
     }
     touchStartX.current = null;
   };
