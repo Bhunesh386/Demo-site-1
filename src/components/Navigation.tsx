@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
@@ -75,22 +76,19 @@ export function Navigation() {
         <nav className="container mx-auto px-4 lg:px-6 h-20 md:h-24 flex items-center justify-between">
           <Link
             href="/"
-            className={clsx(
-              'font-serif text-2xl md:text-3xl font-medium tracking-wide flex items-center gap-3 group z-50 transition-colors duration-300',
-              isSolid ? 'text-[var(--color-body)]' : 'text-white',
-            )}
+            className="flex items-center gap-3 group z-50 transition-colors duration-300 relative"
           >
-            <span
+            <Image
+              src="/images/logo.png"
+              alt="Hotel Ratnawali Logo"
+              width={240}
+              height={40}
               className={clsx(
-                'w-8 h-8 md:w-9 md:h-9 border flex items-center justify-center rounded-sm text-base md:text-lg transition-all duration-700 ease-out',
-                isSolid
-                  ? 'border-[var(--color-accent)]/40 text-[var(--color-accent)] md:group-hover:bg-[var(--color-accent)] md:group-hover:text-white'
-                  : 'border-divider text-white md:group-hover:bg-surface/20',
+                "w-auto h-8 md:h-10 object-contain transition-all duration-300",
+                !isSolid && "brightness-0 invert drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
               )}
-            >
-              H
-            </span>
-            <span className="relative overflow-hidden tracking-wider">Ratnawali</span>
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}
