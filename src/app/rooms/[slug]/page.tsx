@@ -1,8 +1,9 @@
 import { notFound } from 'next/navigation';
 import { rooms } from '@/content/rooms';
 import Link from 'next/link';
-import Image from 'next/image';
 import { BookingWidget } from '@/components/BookingWidget';
+import { RoomGallery } from '@/components/RoomGallery';
+import { roomGalleries } from '@/data/images';
 import type { Metadata } from 'next';
 
 export function generateStaticParams() {
@@ -19,12 +20,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     return { title: 'Room Not Found' };
   }
 
-  const roomImageMap: Record<string, string> = {
-    'deluxe': '/images/room-standard.jpg',
-    'super-deluxe': '/images/room-deluxe.jpg',
-    'ratnawali-royal-suite': '/images/room-family.jpg'
-  };
-  const imgUrl = roomImageMap[room.slug] || '/images/room-standard.jpg';
+  const gallery = roomGalleries[room.slug];
+  const heroImage = gallery?.[0];
 
   return {
     title: `${room.name} | Hotel Ratnawali Jodhpur`,
@@ -36,15 +33,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: `${room.name} | Hotel Ratnawali Jodhpur`,
       description: room.description,
       url: `https://hotelratnawalijodhpur.com/rooms/${room.slug}`,
-      images: [
-        {
-          url: imgUrl,
-          width: 1200,
-          height: 630,
-          alt: `${room.name} at Hotel Ratnawali Jodhpur`,
-        },
-      ],
-    }
+      images: heroImage
+        ? [
+            {
+              url: heroImage.src,
+              width: heroImage.width,
+              height: 630, // social crop
+              alt: heroImage.alt,
+            },
+          ]
+        : [],
+    },
   };
 }
 
@@ -59,12 +58,8 @@ export default async function RoomPage({ params }: { params: Promise<{ slug: str
   const priceINR = (room.basePrice / 100).toLocaleString('en-IN');
   const priceNumeric = (room.basePrice / 100).toString();
 
-  const roomImageMap: Record<string, string> = {
-    'deluxe': '/images/room-standard.jpg',
-    'super-deluxe': '/images/room-deluxe.jpg',
-    'ratnawali-royal-suite': '/images/room-family.jpg'
-  };
-  const imgUrl = roomImageMap[room.slug] || '/images/room-standard.jpg';
+  const gallery = roomGalleries[room.slug] ?? [];
+  const heroImage = gallery[0];
 
   // JSON-LD: Hotel + HotelRoom
   const jsonLd = {
@@ -72,14 +67,14 @@ export default async function RoomPage({ params }: { params: Promise<{ slug: str
     '@type': 'HotelRoom',
     name: room.name,
     description: room.description,
-    image: `https://hotelratnawalijodhpur.com${imgUrl}`,
+    image: heroImage ? `https://hotelratnawalijodhpur.com${heroImage.src}` : undefined,
     bed: {
       '@type': 'BedDetails',
       typeOfBed: 'King/Twin',
     },
     occupancy: {
       '@type': 'QuantitativeValue',
-      value: room.capacity.replace('[CONFIRM] ', ''), // Fallback stripping
+      value: room.capacity.replace('[CONFIRM] ', ''),
     },
     amenityFeature: room.features.map(f => ({
       '@type': 'LocationFeatureSpecification',
@@ -127,15 +122,16 @@ export default async function RoomPage({ params }: { params: Promise<{ slug: str
           </ol>
         </nav>
         
+        {/* Room gallery — full width hero with dots and swipe on detail page */}
         <div className="h-[40vh] md:h-96 relative overflow-hidden mb-8 md:mb-12 border border-obsidian/10 rounded-sm">
-          <Image 
-            src={imgUrl}
-            alt={`${room.name} interior at Hotel Ratnawali Jodhpur`}
-            fill
-            sizes="(max-width: 768px) 100vw, 896px"
-            priority
-            className="object-cover"
-          />
+          {gallery.length > 0 ? (
+            <RoomGallery
+              images={gallery}
+              showControls={gallery.length > 1}
+              sizes="(max-width: 768px) 100vw, 896px"
+              className="absolute inset-0"
+            />
+          ) : null}
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-start gap-8 md:gap-12">

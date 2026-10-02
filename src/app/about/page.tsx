@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { AboutClient } from "./AboutClient";
+import { aboutGallery } from "@/data/images";
 
 export const metadata: Metadata = {
   title: "Our Story & Heritage | About Hotel Ratnawali Jodhpur",
@@ -15,10 +16,10 @@ export const metadata: Metadata = {
     url: "https://hotelratnawalijodhpur.com/about",
     images: [
       {
-        url: "/images/hero-secondary.jpg",
+        url: aboutGallery[0].src,
         width: 1200,
         height: 630,
-        alt: "Interior of Hotel Ratnawali Jodhpur — heritage architecture meets modern comfort",
+        alt: aboutGallery[0].alt,
       },
     ],
   },

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ContactClient } from "./ContactClient";
+import { contactLocationImage } from "@/data/images";
 
 export const metadata: Metadata = {
   title: "Contact & Reservations — Hotel Ratnawali Jodhpur",
@@ -15,10 +16,10 @@ export const metadata: Metadata = {
     url: "https://hotelratnawalijodhpur.com/contact",
     images: [
       {
-        url: "/images/amenity-spa.jpg",
+        url: contactLocationImage.src,
         width: 1200,
         height: 630,
-        alt: "Hotel Ratnawali Jodhpur — serene spa and wellness facilities",
+        alt: "Hotel Ratnawali Jodhpur — attentive service and curated hospitality",
       },
     ],
   },

@@ -1,7 +1,8 @@
 // Server Component — owns metadata for this route.
-// The interactive parallax hero is isolated in HomeClient.
+// The interactive hero slideshow is isolated in HomeClient.
 import type { Metadata } from "next";
 import { HomeClient } from "./HomeClient";
+import { ogImage } from "@/data/images";
 
 export const metadata: Metadata = {
   title: "Hotel Ratnawali Jodhpur | Heritage Boutique Hotel near Clock Tower",
@@ -17,10 +18,10 @@ export const metadata: Metadata = {
     url: "https://hotelratnawalijodhpur.com",
     images: [
       {
-        url: "/images/hero-main.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Hotel Ratnawali Jodhpur — heritage boutique hotel exterior with Blue City view",
+        url: ogImage.url,
+        width: ogImage.width,
+        height: ogImage.height,
+        alt: ogImage.alt,
       },
     ],
   },

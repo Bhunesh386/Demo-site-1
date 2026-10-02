@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { contactLocationImage } from '@/data/images';
 
 const staggerContainer = {
   hidden: { opacity: 0 },
@@ -132,8 +133,8 @@ export function ContactClient() {
                   149–150 Nai Sarak, Jodhpur
                 </span>
                 <Image
-                  src="/images/amenity-spa.jpg"
-                  alt="Aerial view of Hotel Ratnawali's surroundings in Jodhpur's Nai Sarak neighbourhood near the Clock Tower"
+                  src={contactLocationImage.src}
+                  alt={contactLocationImage.alt}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover opacity-90 transition-transform duration-[1.5s] ease-out md:group-hover:scale-105"
