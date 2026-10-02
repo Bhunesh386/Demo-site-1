@@ -15,7 +15,7 @@ export function Navigation() {
 
   const [scrolled, setScrolled] = useState<boolean>(() => {
     if (typeof window === 'undefined') return false;
-    return window.scrollY > 60;
+    return window.scrollY >= 40;
   });
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export function Navigation() {
       setScrolled(true);
       return;
     }
-    const onScroll = () => setScrolled(window.scrollY > 60);
+    const onScroll = () => setScrolled(window.scrollY >= 40);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, [isHome]);
@@ -51,138 +51,159 @@ export function Navigation() {
     { href: '/contact', label: 'Contact' },
   ];
 
-  // On home page: transparent until scrolled past hero; everywhere else always solid
-  const solidNav = scrolled || !isHome || isMobileMenuOpen;
+  // One source of truth for nav state: transparent = (route is "/" AND scrollY < 40). Everything else is solid.
+  const isTransparent = isHome && !scrolled && !isMobileMenuOpen;
+  const isSolid = !isTransparent;
 
   return (
-    <header
-      className={twMerge(
-        clsx(
-          'sticky top-0 z-50 transition-all duration-300',
-          solidNav
-            ? 'bg-alabaster/90 backdrop-blur-xl border-b border-obsidian/5 shadow-[0_4px_30px_rgba(0,0,0,0.02)]'
-            : 'bg-transparent border-b border-transparent',
-        ),
-      )}
-    >
-      <nav className="container mx-auto px-4 lg:px-6 h-20 md:h-24 flex items-center justify-between">
-        <Link
-          href="/"
-          className={clsx(
-            'font-serif text-2xl md:text-3xl font-medium tracking-wide flex items-center gap-3 group z-50 transition-colors duration-300',
-            solidNav ? 'text-obsidian' : 'text-alabaster',
-          )}
-        >
-          <span
+    <>
+      <header
+        className={twMerge(
+          clsx(
+            'fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300',
+            isSolid
+              ? 'bg-[var(--color-surface)] border-b border-[var(--color-divider)] shadow-sm'
+              : 'bg-transparent border-b border-transparent',
+          ),
+        )}
+      >
+        {/* Soft top gradient scrim for transparent state to ensure readability */}
+        {!isSolid && (
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent -z-10 pointer-events-none" />
+        )}
+        
+        <nav className="container mx-auto px-4 lg:px-6 h-20 md:h-24 flex items-center justify-between">
+          <Link
+            href="/"
             className={clsx(
-              'w-8 h-8 md:w-9 md:h-9 border flex items-center justify-center rounded-sm text-base md:text-lg transition-all duration-700 ease-out',
-              solidNav
-                ? 'border-champagne/40 text-champagne md:group-hover:bg-champagne md:group-hover:text-alabaster'
-                : 'border-alabaster/50 text-alabaster md:group-hover:bg-alabaster/20',
+              'font-serif text-2xl md:text-3xl font-medium tracking-wide flex items-center gap-3 group z-50 transition-colors duration-300',
+              isSolid ? 'text-[var(--color-body)]' : 'text-white',
             )}
           >
-            H
-          </span>
-          <span className="relative overflow-hidden tracking-wider">Ratnawali</span>
-        </Link>
-
-        {/* Desktop Menu */}
-        <ul className="hidden md:flex items-center gap-10">
-          {links.map((link) => {
-            const isActive = pathname === link.href;
-            return (
-              <li key={link.href} className="relative group">
-                <Link
-                  href={link.href}
-                  className={twMerge(
-                    clsx(
-                      'font-sans text-sm tracking-widest uppercase transition-colors duration-300 py-2',
-                      solidNav
-                        ? isActive
-                          ? 'text-obsidian font-medium'
-                          : 'text-obsidian/60 hover:text-obsidian'
-                        : isActive
-                        ? 'text-alabaster font-medium'
-                        : 'text-alabaster/70 hover:text-alabaster',
-                    ),
-                  )}
-                >
-                  {link.label}
-                </Link>
-                {isActive && (
-                  <motion.div
-                    layoutId="nav-underline"
-                    className="absolute -bottom-1.5 left-0 right-0 h-[1px] bg-champagne"
-                    initial={false}
-                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                  />
-                )}
-                {!isActive && (
-                  <div className="absolute -bottom-1.5 left-0 right-0 h-[1px] bg-champagne scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500 ease-out" />
-                )}
-              </li>
-            );
-          })}
-          <li>
-            <Link
-              href="/contact"
+            <span
               className={clsx(
-                'relative px-8 py-3 border font-sans text-xs uppercase tracking-widest transition-all duration-500 shadow-sm group flex items-center gap-2',
-                solidNav
-                  ? 'bg-transparent border-champagne text-obsidian hover:bg-champagne hover:text-alabaster'
-                  : 'bg-transparent border-alabaster/50 text-alabaster hover:bg-alabaster/10',
+                'w-8 h-8 md:w-9 md:h-9 border flex items-center justify-center rounded-sm text-base md:text-lg transition-all duration-700 ease-out',
+                isSolid
+                  ? 'border-[var(--color-accent)]/40 text-[var(--color-accent)] md:group-hover:bg-[var(--color-accent)] md:group-hover:text-white'
+                  : 'border-white/50 text-white md:group-hover:bg-white/20',
               )}
             >
-              <span className="relative z-10">Book Now</span>
-              <span className="relative z-10 w-1.5 h-1.5 rounded-full bg-champagne group-hover:bg-alabaster transition-colors duration-500" />
-            </Link>
-          </li>
-        </ul>
+              H
+            </span>
+            <span className="relative overflow-hidden tracking-wider">Ratnawali</span>
+          </Link>
 
-        {/* Mobile Menu Toggle */}
-        <button
-          className={clsx(
-            'md:hidden z-50 w-11 h-11 flex flex-col items-center justify-center gap-1.5 focus:outline-none transition-colors duration-300',
-          )}
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle Menu"
-          aria-expanded={isMobileMenuOpen}
-        >
-          <span
+          {/* Desktop Navigation */}
+          <ul className="hidden lg:flex items-center gap-10">
+            {links.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <li key={link.href} className="relative group">
+                  <Link
+                    href={link.href}
+                    className={twMerge(
+                      clsx(
+                        'font-sans text-sm tracking-widest uppercase transition-colors duration-300 py-2',
+                        isSolid
+                          ? isActive
+                            ? 'text-[var(--color-body)] font-medium'
+                            : 'text-[var(--color-muted)] hover:text-[var(--color-body)]'
+                          : isActive
+                          ? 'text-white font-medium'
+                          : 'text-white/80 hover:text-white',
+                      ),
+                    )}
+                  >
+                    {link.label}
+                  </Link>
+                  {isActive && (
+                    <motion.div
+                      layoutId="nav-underline"
+                      className="absolute -bottom-1.5 left-0 right-0 h-[1px] bg-[var(--color-accent)]"
+                      initial={false}
+                      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                    />
+                  )}
+                  {!isActive && (
+                    <div className="absolute -bottom-1.5 left-0 right-0 h-[1px] bg-[var(--color-accent)] scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500 ease-out" />
+                  )}
+                </li>
+              );
+            })}
+            <li>
+              <Link
+                href="/contact"
+                className={clsx(
+                  'px-6 py-2.5 font-sans text-xs uppercase tracking-widest transition-all duration-300 border flex items-center gap-2',
+                  isSolid
+                    ? 'border-[var(--color-accent)] text-[var(--color-accent)] hover:bg-[var(--color-accent)] hover:text-white'
+                    : 'border-white/80 text-white hover:bg-white hover:text-[var(--color-body)]',
+                )}
+              >
+                <span>Book Now</span>
+                <svg
+                  className="w-3 h-3"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="square"
+                    strokeLinejoin="miter"
+                    strokeWidth={2}
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
+                </svg>
+              </Link>
+            </li>
+          </ul>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={clsx(
-              'block w-6 h-[1px] transition-all duration-300',
-              isMobileMenuOpen || solidNav ? 'bg-obsidian' : 'bg-alabaster',
-              isMobileMenuOpen && 'rotate-45 translate-y-[7px]',
+              'lg:hidden z-50 p-2 -mr-2 transition-colors duration-300',
+              isSolid ? 'text-[var(--color-body)]' : 'text-white',
             )}
-          />
-          <span
-            className={clsx(
-              'block w-6 h-[1px] transition-all duration-300',
-              isMobileMenuOpen || solidNav ? 'bg-obsidian' : 'bg-alabaster',
-              isMobileMenuOpen && 'opacity-0',
-            )}
-          />
-          <span
-            className={clsx(
-              'block w-6 h-[1px] transition-all duration-300',
-              isMobileMenuOpen || solidNav ? 'bg-obsidian' : 'bg-alabaster',
-              isMobileMenuOpen && '-rotate-45 -translate-y-[7px]',
-            )}
-          />
-        </button>
-      </nav>
+            aria-label="Toggle navigation menu"
+          >
+            <div className="w-6 h-5 flex flex-col justify-between items-end">
+              <span
+                className={clsx(
+                  'h-[1px] transition-all duration-300',
+                  isMobileMenuOpen ? 'w-6 rotate-45 translate-y-[9px]' : 'w-6',
+                  isSolid ? 'bg-[var(--color-body)]' : 'bg-white',
+                )}
+              />
+              <span
+                className={clsx(
+                  'h-[1px] transition-all duration-300',
+                  isMobileMenuOpen ? 'opacity-0' : 'w-4',
+                  isSolid ? 'bg-[var(--color-body)]' : 'bg-white',
+                )}
+              />
+              <span
+                className={clsx(
+                  'h-[1px] transition-all duration-300',
+                  isMobileMenuOpen ? 'w-6 -rotate-45 -translate-y-[10px]' : 'w-5',
+                  isSolid ? 'bg-[var(--color-body)]' : 'bg-white',
+                )}
+              />
+            </div>
+          </button>
+        </nav>
+      </header>
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-alabaster flex flex-col justify-center items-center h-screen md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0, transition: { duration: 0.3 } }}
+            className="fixed inset-0 z-40 bg-[var(--color-surface)] flex flex-col pt-24 px-6 pb-10"
           >
-            <ul className="flex flex-col items-center gap-8 w-full px-6">
+            <ul className="flex-1 flex flex-col items-center justify-center gap-8">
               {links.map((link, i) => {
                 const isActive = pathname === link.href;
                 return (
@@ -197,7 +218,7 @@ export function Navigation() {
                       href={link.href}
                       className={clsx(
                         'font-serif text-3xl tracking-wide block w-full py-2',
-                        isActive ? 'text-champagne font-medium' : 'text-obsidian',
+                        isActive ? 'text-[var(--color-accent)] font-medium' : 'text-[var(--color-body)]',
                       )}
                     >
                       {link.label}
@@ -213,16 +234,28 @@ export function Navigation() {
               >
                 <Link
                   href="/contact"
-                  className="px-10 py-4 bg-transparent border border-champagne text-obsidian font-sans text-sm uppercase tracking-widest flex items-center justify-center gap-3 w-full"
+                  className="px-10 py-4 bg-transparent border border-[var(--color-accent)] text-[var(--color-accent)] font-sans text-sm uppercase tracking-widest flex items-center justify-center gap-3 w-full"
                 >
                   <span>Book Now</span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-champagne" />
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="square"
+                      strokeLinejoin="miter"
+                      strokeWidth={2}
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
+                  </svg>
                 </Link>
               </motion.li>
             </ul>
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 }
