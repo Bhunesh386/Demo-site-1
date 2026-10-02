@@ -15,7 +15,7 @@ test.describe('Hero Slideshow', () => {
     const slide1Headline = page.getByRole('heading', { name: 'A Quiet Sanctuary.' });
     await expect(slide1Headline).toBeVisible();
     
-    const slide2Headline = page.getByRole('heading', { name: 'Heritage Woven in Stone.' });
+    const slide2Headline = page.getByRole('heading', { name: 'Where Heritage Lives.' });
     
     // Wait for the interval (6000ms) + buffer
     await page.waitForTimeout(6500);
@@ -26,8 +26,9 @@ test.describe('Hero Slideshow', () => {
   test('Clicking dot 2 changes to slide 2', async ({ page }) => {
     await page.goto('/');
     
-    const slide2Headline = page.getByRole('heading', { name: 'Heritage Woven in Stone.' });
-    const dot2 = page.getByRole('button', { name: 'Go to slide 2' });
+    const slide2Headline = page.getByRole('heading', { name: 'Where Heritage Lives.' });
+    // The dots have role="tab"
+    const dot2 = page.getByRole('tab', { name: /Go to slide 2/ });
     
     await dot2.click();
     await expect(slide2Headline).toBeVisible();
@@ -39,8 +40,8 @@ test.describe('Hero Slideshow', () => {
     const nextBtn = page.getByRole('button', { name: 'Next slide' });
     const prevBtn = page.getByRole('button', { name: 'Previous slide' });
     
-    const slide2Headline = page.getByRole('heading', { name: 'Heritage Woven in Stone.' });
-    const lastSlideHeadline = page.getByRole('heading', { name: 'Culinary Traditions Kept Alive.' });
+    const slide2Headline = page.getByRole('heading', { name: 'Where Heritage Lives.' });
+    const lastSlideHeadline = page.getByRole('heading', { name: 'Your Night, Reimagined.' });
     
     // Click Next -> should be on slide 2
     await nextBtn.click();
@@ -70,7 +71,7 @@ test.describe('Hero Slideshow', () => {
     // Slide 1 should still be visible because autoplay is disabled
     await expect(slide1Headline).toBeVisible();
     
-    const slide2Headline = page.getByRole('heading', { name: 'Heritage Woven in Stone.' });
+    const slide2Headline = page.getByRole('heading', { name: 'Where Heritage Lives.' });
     await expect(slide2Headline).not.toBeVisible();
   });
 });
