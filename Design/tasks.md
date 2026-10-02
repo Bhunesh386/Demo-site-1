@@ -163,7 +163,7 @@
     - The dynamic total price (calculated as `pricePerNight * nights`).
     - A distinct "Select Room" button that updates the Zustand store and navigates to `/book/checkout`.
 
-### Phase 4: Checkout Form & Summary (UI)
+### Phase 4: Checkout Form & Summary (UI) (Completed)
 - **Guest Details Form:** 
   - Implement a secure, accessible form requesting First Name, Last Name, Email, and Phone Number.
   - **Validation Strategy:** Utilize `react-hook-form` coupled with `zod` for robust, type-safe client-side validation and error messaging.
@@ -172,7 +172,7 @@
 - **Success State:** 
   - Upon clicking "Confirm Reservation", transition to `/book/confirmation` (or a full-screen modal) displaying a mock Booking Reference Number, a "Thank You" message, and a button to return to the homepage.
 
-### Phase 5: Motion & Aesthetic Polish
+### Phase 5: Motion & Aesthetic Polish (Completed)
 - **Transitions:** 
   - Use `framer-motion` `<AnimatePresence mode="wait">` to orchestrate smooth fade-and-slide page transitions between `/book`, `/book/checkout`, and `/book/confirmation`.
 - **Micro-interactions:** 
