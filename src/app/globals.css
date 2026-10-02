@@ -7,11 +7,54 @@
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-playfair), ui-serif, Georgia, serif;
+
+  /* Site-wide easing — used as a CSS custom property for consistency */
+  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @layer base {
   body {
     background-color: var(--color-alabaster);
     color: var(--color-obsidian);
+  }
+}
+
+/* ── Hero Ken Burns zoom ────────────────────────────────────────────────────── */
+@keyframes kenBurns {
+  from { transform: scale(1); }
+  to   { transform: scale(1.06); }
+}
+
+.animate-ken-burns {
+  animation: kenBurns 7s var(--ease-premium) forwards;
+}
+
+/* Disable Ken Burns (and all slide/motion) under reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-ken-burns {
+    animation: none;
+  }
+}
+
+/* ── Scroll reveal ──────────────────────────────────────────────────────────── */
+/* Applied programmatically by ScrollReveal component via JS class toggling */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 600ms var(--ease-premium),
+    transform 600ms var(--ease-premium);
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
