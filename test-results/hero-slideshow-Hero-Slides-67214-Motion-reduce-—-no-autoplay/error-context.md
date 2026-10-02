@@ -6,8 +6,8 @@
 
 # Test info
 
-- Name: booking.spec.ts >> Booking Flow >> should navigate to room and display booking widget
-- Location: tests/e2e/booking.spec.ts:4:7
+- Name: hero-slideshow.spec.ts >> Hero Slideshow >> With reducedMotion: reduce — no autoplay
+- Location: tests/e2e/hero-slideshow.spec.ts:59:7
 
 # Error details
 
