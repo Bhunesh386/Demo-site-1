@@ -1,6 +1,21 @@
 @import "tailwindcss";
 
 @theme {
+  --color-page: #F1E9DC;
+  --color-surface: #F7F1E7;
+  --color-band: #E9DFCE;
+  --color-divider: #D9CBB4;
+  
+  --color-body: #2B2420;
+  --color-muted: #6B5E52;
+  
+  --color-accent: #A8844F;
+  --color-accent-text: #7A5C2E;
+  
+  --color-dark: #2A211B;
+  --color-dark-text: #E9DFCE;
+
+  /* Keep legacy vars just in case they're still in use elsewhere, but we will migrate away from them */
   --color-obsidian: #2A2A2A;
   --color-champagne: #B89C72;
   --color-alabaster: #FAF9F6;
@@ -14,8 +29,8 @@
 
 @layer base {
   body {
-    background-color: var(--color-alabaster);
-    color: var(--color-obsidian);
+    background-color: var(--color-page);
+    color: var(--color-body);
   }
 }
 
