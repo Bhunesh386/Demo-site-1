@@ -69,6 +69,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: BASE_URL,
   },
+  icons: {
+    icon: '/images/logo.png',
+  },
 };
 
 import Script from "next/script";
