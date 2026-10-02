@@ -132,22 +132,22 @@ export const roomGalleries: Record<string, RoomImage[]> = {
 
 export const aboutGallery = [
   {
-    src: '/images/main background/7e58462efe97ce3ad1fc9f1b25c263fd.jpg',
-    alt: 'Ornate heritage lobby at Hotel Ratnawali — carved arches, golden chandelier and marble floors',
-    width: 1000,
-    height: 562,
+    src: '/images/1.jpg',
+    alt: 'Hotel Ratnawali — exterior and facade',
+    width: 1448,
+    height: 1086,
   },
   {
-    src: '/images/amenities/84835143858978e59a50c2f4920b21fd.jpg',
-    alt: 'Illuminated swimming pool at Hotel Ratnawali at dusk — colonial pavilion reflected in still water',
-    width: 1000,
-    height: 657,
+    src: '/images/3.jpg',
+    alt: 'Hotel Ratnawali — interior details',
+    width: 1448,
+    height: 1086,
   },
   {
-    src: '/images/main background/5184107c0156dca2a9f12c8292b7b2fb.jpg',
-    alt: 'Heritage grand lobby of Hotel Ratnawali — carved teak ceiling, peacock motif and traditional seating',
-    width: 1199,
-    height: 763,
+    src: '/images/2.jpg',
+    alt: 'Hotel Ratnawali — rooms and spaces',
+    width: 1448,
+    height: 1086,
   },
   {
     src: '/images/amenities/e8a493c2104cd4b5c4af74ea7a87ec52.jpg',
