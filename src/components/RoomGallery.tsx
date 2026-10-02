@@ -182,10 +182,10 @@ export function RoomGallery({
               aria-label={`Image ${i + 1}: ${img.alt}`}
               onClick={() => go(i)}
               className={[
-                'w-2 h-2 rounded-full border transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-champagne',
+                'w-2 h-2 rounded-full border transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent',
                 i === current
-                  ? 'bg-champagne border-champagne'
-                  : 'bg-transparent border-alabaster/60',
+                  ? 'bg-accent border-accent'
+                  : 'bg-transparent border-divider/60',
               ].join(' ')}
             />
           ))}

@@ -113,17 +113,17 @@ export default async function RoomPage({ params }: { params: Promise<{ slug: str
       />
       <div className="pt-24 pb-24 container mx-auto px-4 max-w-4xl">
         <nav aria-label="Breadcrumb" className="mb-6 md:mb-8 pt-4">
-          <ol className="flex items-center gap-2 font-sans text-xs uppercase tracking-widest text-obsidian/50">
-            <li><Link href="/" className="md:hover:text-champagne transition-colors">Home</Link></li>
-            <li aria-hidden="true" className="text-obsidian/30">›</li>
-            <li><Link href="/rooms" className="md:hover:text-champagne transition-colors">Rooms</Link></li>
-            <li aria-hidden="true" className="text-obsidian/30">›</li>
-            <li className="text-champagne" aria-current="page">{room.name}</li>
+          <ol className="flex items-center gap-2 font-sans text-xs uppercase tracking-widest text-muted">
+            <li><Link href="/" className="md:hover:text-accent transition-colors">Home</Link></li>
+            <li aria-hidden="true" className="text-muted">›</li>
+            <li><Link href="/rooms" className="md:hover:text-accent transition-colors">Rooms</Link></li>
+            <li aria-hidden="true" className="text-muted">›</li>
+            <li className="text-accent" aria-current="page">{room.name}</li>
           </ol>
         </nav>
         
         {/* Room gallery — full width hero with dots and swipe on detail page */}
-        <div className="h-[40vh] md:h-96 relative overflow-hidden mb-8 md:mb-12 border border-obsidian/10 rounded-sm">
+        <div className="h-[40vh] md:h-96 relative overflow-hidden mb-8 md:mb-12 border border-dark/10 rounded-sm">
           {gallery.length > 0 ? (
             <RoomGallery
               images={gallery}
@@ -136,15 +136,15 @@ export default async function RoomPage({ params }: { params: Promise<{ slug: str
 
         <div className="flex flex-col md:flex-row justify-between items-start gap-8 md:gap-12">
           <div className="w-full md:w-2/3">
-            <h1 className="font-serif text-3xl md:text-5xl text-obsidian mb-4 md:mb-6">{room.name}</h1>
-            <p className="font-sans text-base md:text-xl font-light text-obsidian/80 mb-8 md:mb-10 leading-relaxed">
+            <h1 className="font-serif text-3xl md:text-5xl text-body mb-4 md:mb-6">{room.name}</h1>
+            <p className="font-sans text-base md:text-xl font-light text-body/80 mb-8 md:mb-10 leading-relaxed">
               {room.description}
             </p>
             
-            <h2 className="font-sans text-base md:text-lg uppercase tracking-widest text-champagne mb-4">Features</h2>
+            <h2 className="font-sans text-base md:text-lg uppercase tracking-widest text-accent mb-4">Features</h2>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 mb-10">
               {room.features.map(f => (
-                <li key={f} className="font-sans text-sm md:text-base text-obsidian/80 flex items-center before:content-[''] before:block before:w-1.5 before:h-1.5 before:bg-champagne before:mr-3">
+                <li key={f} className="font-sans text-sm md:text-base text-body/80 flex items-center before:content-[''] before:block before:w-1.5 before:h-1.5 before:bg-accent before:mr-3">
                   {f}
                 </li>
               ))}
@@ -152,9 +152,9 @@ export default async function RoomPage({ params }: { params: Promise<{ slug: str
           </div>
           
           <div className="w-full md:w-1/3 md:sticky md:top-24">
-            <div className="bg-alabaster p-6 md:p-8 border border-obsidian/10 text-center rounded-sm">
-              <span className="block font-sans text-3xl md:text-4xl text-obsidian mb-2">₹{priceINR}</span>
-              <span className="block font-sans text-[10px] md:text-xs text-obsidian/60 uppercase tracking-widest">+ taxes / night</span>
+            <div className="bg-page p-6 md:p-8 border border-dark/10 text-center rounded-sm">
+              <span className="block font-sans text-3xl md:text-4xl text-body mb-2">₹{priceINR}</span>
+              <span className="block font-sans text-[10px] md:text-xs text-muted uppercase tracking-widest">+ taxes / night</span>
             </div>
             <BookingWidget roomTypeSlug={room.slug} roomName={room.name} price={room.basePrice} />
           </div>

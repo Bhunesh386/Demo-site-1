@@ -112,7 +112,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className="bg-alabaster text-obsidian font-sans antialiased min-h-screen flex flex-col overflow-x-hidden">
+      <body className="bg-page text-body font-sans antialiased min-h-screen flex flex-col overflow-x-hidden">
         <Navigation />
         {children}
         <Footer />

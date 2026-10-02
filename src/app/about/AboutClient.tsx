@@ -75,16 +75,16 @@ export function AboutClient() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
       />
 
-      <div className="pt-24 md:pt-32 pb-24 md:pb-40 overflow-hidden relative bg-alabaster">
-        <div className="absolute top-0 left-1/4 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-champagne/5 rounded-full blur-[80px] md:blur-[100px] -z-10 pointer-events-none" />
+      <div className="pt-24 md:pt-32 pb-24 md:pb-40 overflow-hidden relative bg-page">
+        <div className="absolute top-0 left-1/4 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-accent/5 rounded-full blur-[80px] md:blur-[100px] -z-10 pointer-events-none" />
 
         <div className="container mx-auto px-4 md:px-6">
           {/* ── Breadcrumb ── */}
           <nav aria-label="Breadcrumb" className="mb-8 pt-4">
-            <ol className="flex items-center gap-2 font-sans text-xs uppercase tracking-widest text-obsidian/50">
-              <li><Link href="/" className="md:hover:text-champagne transition-colors">Home</Link></li>
-              <li aria-hidden="true" className="text-obsidian/30">›</li>
-              <li className="text-champagne" aria-current="page">About</li>
+            <ol className="flex items-center gap-2 font-sans text-xs uppercase tracking-widest text-muted">
+              <li><Link href="/" className="md:hover:text-accent transition-colors">Home</Link></li>
+              <li aria-hidden="true" className="text-muted">›</li>
+              <li className="text-accent" aria-current="page">About</li>
             </ol>
           </nav>
 
@@ -99,12 +99,12 @@ export function AboutClient() {
             <motion.h1
               id="about-heading"
               variants={fadeUp}
-              className="font-serif text-4xl md:text-7xl text-obsidian mb-8 md:mb-10 tracking-tight"
+              className="font-serif text-4xl md:text-7xl text-body mb-8 md:mb-10 tracking-tight"
             >
               Our Heritage &amp; Vision
             </motion.h1>
-            <motion.div variants={fadeUp} className="w-16 h-[1px] bg-champagne mx-auto mb-10 md:mb-12 opacity-80" />
-            <motion.p variants={fadeUp} className="font-sans text-lg md:text-3xl text-obsidian/70 font-light leading-relaxed">
+            <motion.div variants={fadeUp} className="w-16 h-[1px] bg-accent mx-auto mb-10 md:mb-12 opacity-80" />
+            <motion.p variants={fadeUp} className="font-sans text-lg md:text-3xl text-muted font-light leading-relaxed">
               Since 1987, Hotel Ratnawali has been a sanctuary where understated design meets intuitive
               Marwari hospitality. We believe true luxury lies in the details — the quiet spaces, the
               thoughtful amenities, and the seamless service that feels like coming home.
@@ -124,11 +124,11 @@ export function AboutClient() {
               <div className="space-y-6 md:space-y-12">
                 <motion.div variants={imageReveal} className="relative h-[40vh] md:h-[650px] overflow-hidden group shadow-lg rounded-sm">
                   <Image src={aboutGallery[0].src} alt={aboutGallery[0].alt} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-[1.5s] ease-out md:group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-obsidian/10 md:group-hover:bg-transparent transition-colors duration-700" />
+                  <div className="absolute inset-0 bg-dark/10 md:group-hover:bg-transparent transition-colors duration-700" />
                 </motion.div>
                 <motion.div variants={imageReveal} className="relative h-[30vh] md:h-[450px] overflow-hidden group shadow-lg rounded-sm">
                   <Image src={aboutGallery[1].src} alt={aboutGallery[1].alt} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-[1.5s] ease-out md:group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-obsidian/10 md:group-hover:bg-transparent transition-colors duration-700" />
+                  <div className="absolute inset-0 bg-dark/10 md:group-hover:bg-transparent transition-colors duration-700" />
                 </motion.div>
               </div>
 
@@ -136,11 +136,11 @@ export function AboutClient() {
               <div className="space-y-6 md:space-y-12 pt-0 md:pt-32">
                 <motion.div variants={imageReveal} className="relative h-[30vh] md:h-[450px] overflow-hidden group shadow-lg rounded-sm">
                   <Image src={aboutGallery[2].src} alt={aboutGallery[2].alt} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-[1.5s] ease-out md:group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-obsidian/10 md:group-hover:bg-transparent transition-colors duration-700" />
+                  <div className="absolute inset-0 bg-dark/10 md:group-hover:bg-transparent transition-colors duration-700" />
                 </motion.div>
                 <motion.div variants={imageReveal} className="relative h-[40vh] md:h-[650px] overflow-hidden group shadow-lg rounded-sm">
                   <Image src={aboutGallery[3].src} alt={aboutGallery[3].alt} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-[1.5s] ease-out md:group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-obsidian/10 md:group-hover:bg-transparent transition-colors duration-700" />
+                  <div className="absolute inset-0 bg-dark/10 md:group-hover:bg-transparent transition-colors duration-700" />
                 </motion.div>
               </div>
             </motion.div>
@@ -155,10 +155,10 @@ export function AboutClient() {
               variants={staggerContainer}
               className="text-center mb-12 md:mb-20"
             >
-              <motion.h2 id="team-heading" variants={fadeUp} className="font-serif text-3xl md:text-5xl text-obsidian mb-4 md:mb-6">
+              <motion.h2 id="team-heading" variants={fadeUp} className="font-serif text-3xl md:text-5xl text-body mb-4 md:mb-6">
                 The People Behind Ratnawali
               </motion.h2>
-              <motion.div variants={fadeUp} className="w-10 h-[1px] bg-champagne mx-auto opacity-60" />
+              <motion.div variants={fadeUp} className="w-10 h-[1px] bg-accent mx-auto opacity-60" />
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
@@ -184,11 +184,11 @@ export function AboutClient() {
                       className="object-cover transition-transform duration-[1.5s] ease-out md:group-hover:scale-105 filter grayscale md:group-hover:grayscale-0"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-obsidian/70 via-transparent to-transparent opacity-40 md:group-hover:opacity-20 transition-opacity duration-700" />
-                    <div className="absolute inset-4 border border-alabaster/0 md:group-hover:border-alabaster/30 transition-colors duration-700 z-20" />
+                    <div className="absolute inset-4 border border-divider/0 md:group-hover:border-divider/30 transition-colors duration-700 z-20" />
                   </div>
-                  <h3 className="font-serif text-2xl md:text-3xl text-obsidian mb-1 transition-colors">{person.name}</h3>
-                  <p className="font-sans text-champagne uppercase tracking-widest text-xs font-semibold mb-4">{person.role}</p>
-                  <p className="font-sans text-sm text-obsidian/70 font-light leading-relaxed">{person.bio}</p>
+                  <h3 className="font-serif text-2xl md:text-3xl text-body mb-1 transition-colors">{person.name}</h3>
+                  <p className="font-sans text-accent uppercase tracking-widest text-xs font-semibold mb-4">{person.role}</p>
+                  <p className="font-sans text-sm text-muted font-light leading-relaxed">{person.bio}</p>
                 </motion.article>
               ))}
             </div>

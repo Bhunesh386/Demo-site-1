@@ -85,7 +85,7 @@ export function Navigation() {
                 'w-8 h-8 md:w-9 md:h-9 border flex items-center justify-center rounded-sm text-base md:text-lg transition-all duration-700 ease-out',
                 isSolid
                   ? 'border-[var(--color-accent)]/40 text-[var(--color-accent)] md:group-hover:bg-[var(--color-accent)] md:group-hover:text-white'
-                  : 'border-white/50 text-white md:group-hover:bg-white/20',
+                  : 'border-divider text-white md:group-hover:bg-surface/20',
               )}
             >
               H
@@ -137,7 +137,7 @@ export function Navigation() {
                   'px-6 py-2.5 font-sans text-xs uppercase tracking-widest transition-all duration-300 border flex items-center gap-2',
                   isSolid
                     ? 'border-[var(--color-accent)] text-[var(--color-accent)] hover:bg-[var(--color-accent)] hover:text-white'
-                    : 'border-white/80 text-white hover:bg-white hover:text-[var(--color-body)]',
+                    : 'border-divider text-white hover:bg-surface hover:text-[var(--color-body)]',
                 )}
               >
                 <span>Book Now</span>
@@ -172,21 +172,21 @@ export function Navigation() {
                 className={clsx(
                   'h-[1px] transition-all duration-300',
                   isMobileMenuOpen ? 'w-6 rotate-45 translate-y-[9px]' : 'w-6',
-                  isSolid ? 'bg-[var(--color-body)]' : 'bg-white',
+                  isSolid ? 'bg-[var(--color-body)]' : 'bg-surface',
                 )}
               />
               <span
                 className={clsx(
                   'h-[1px] transition-all duration-300',
                   isMobileMenuOpen ? 'opacity-0' : 'w-4',
-                  isSolid ? 'bg-[var(--color-body)]' : 'bg-white',
+                  isSolid ? 'bg-[var(--color-body)]' : 'bg-surface',
                 )}
               />
               <span
                 className={clsx(
                   'h-[1px] transition-all duration-300',
                   isMobileMenuOpen ? 'w-6 -rotate-45 -translate-y-[10px]' : 'w-5',
-                  isSolid ? 'bg-[var(--color-body)]' : 'bg-white',
+                  isSolid ? 'bg-[var(--color-body)]' : 'bg-surface',
                 )}
               />
             </div>

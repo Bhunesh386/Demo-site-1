@@ -69,16 +69,16 @@ export function RoomsClient() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd).replace(/</g, '\\u003c') }}
       />
 
-      <div className="pt-32 pb-24 md:pb-40 relative overflow-hidden bg-alabaster">
-        <div className="absolute top-1/4 -right-64 w-[800px] h-[800px] bg-champagne/5 rounded-full blur-[120px] -z-10 pointer-events-none" />
+      <div className="pt-32 pb-24 md:pb-40 relative overflow-hidden bg-page">
+        <div className="absolute top-1/4 -right-64 w-[800px] h-[800px] bg-accent/5 rounded-full blur-[120px] -z-10 pointer-events-none" />
 
         <div className="container mx-auto px-4 md:px-6">
           {/* ── Breadcrumb ── */}
           <nav aria-label="Breadcrumb" className="mb-8">
-            <ol className="flex items-center gap-2 font-sans text-xs uppercase tracking-widest text-obsidian/50">
-              <li><Link href="/" className="md:hover:text-champagne transition-colors">Home</Link></li>
-              <li aria-hidden="true" className="text-obsidian/30">›</li>
-              <li className="text-champagne" aria-current="page">Rooms &amp; Accommodations</li>
+            <ol className="flex items-center gap-2 font-sans text-xs uppercase tracking-widest text-muted">
+              <li><Link href="/" className="md:hover:text-accent transition-colors">Home</Link></li>
+              <li aria-hidden="true" className="text-muted">›</li>
+              <li className="text-accent" aria-current="page">Rooms &amp; Accommodations</li>
             </ol>
           </nav>
 
@@ -88,11 +88,11 @@ export function RoomsClient() {
             animate="show"
             className="max-w-4xl mb-24 md:mb-40 pt-4"
           >
-            <motion.h1 variants={fadeUp} className="font-serif text-5xl md:text-7xl text-obsidian mb-8 tracking-tight">
+            <motion.h1 variants={fadeUp} className="font-serif text-5xl md:text-7xl text-body mb-8 tracking-tight">
               Accommodations
             </motion.h1>
-            <motion.div variants={fadeUp} className="w-16 h-[1px] bg-champagne mb-10 opacity-70" />
-            <motion.p variants={fadeUp} className="font-sans text-xl md:text-2xl text-obsidian/70 font-light leading-relaxed">
+            <motion.div variants={fadeUp} className="w-16 h-[1px] bg-accent mb-10 opacity-70" />
+            <motion.p variants={fadeUp} className="font-sans text-xl md:text-2xl text-muted font-light leading-relaxed">
               Designed for the discerning traveller. Each room at Hotel Ratnawali blends premium
               amenities with authentic Marwari heritage craftsmanship and unparalleled comfort.
             </motion.p>
@@ -119,45 +119,45 @@ export function RoomsClient() {
                       sizes="(max-width: 768px) 100vw, 50vw"
                       className="absolute inset-0 transition-transform duration-[1.5s] ease-out md:group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-obsidian/10 md:group-hover:bg-transparent transition-colors duration-700 z-10 pointer-events-none" />
+                    <div className="absolute inset-0 bg-dark/10 md:group-hover:bg-transparent transition-colors duration-700 z-10 pointer-events-none" />
                   </motion.div>
 
                   <motion.div
                     variants={fadeUp}
-                    className="w-full md:w-1/2 p-6 md:p-10 lg:p-16 bg-white rounded-sm shadow-xl shadow-obsidian/5 -mt-16 md:mt-0 relative z-10 border border-transparent md:hover:border-champagne/30 transition-all duration-700 group mx-4 md:mx-0"
+                    className="w-full md:w-1/2 p-6 md:p-10 lg:p-16 bg-surface rounded-sm shadow-xl shadow-obsidian/5 -mt-16 md:mt-0 relative z-10 border border-transparent md:hover:border-accent/30 transition-all duration-700 group mx-4 md:mx-0"
                   >
                     <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6 mb-6 md:mb-8">
-                      <h2 className="font-serif text-3xl md:text-4xl text-obsidian transition-colors duration-300">{room.name}</h2>
-                      <span className="px-3 py-1 bg-champagne/10 text-champagne text-xs uppercase tracking-widest font-semibold rounded-full self-start md:self-auto">
+                      <h2 className="font-serif text-3xl md:text-4xl text-body transition-colors duration-300">{room.name}</h2>
+                      <span className="px-3 py-1 bg-accent/10 text-accent text-xs uppercase tracking-widest font-semibold rounded-full self-start md:self-auto">
                         Available
                       </span>
                     </div>
 
-                    <p className="font-sans text-base md:text-lg text-obsidian/70 mb-8 md:mb-12 leading-relaxed font-light">
+                    <p className="font-sans text-base md:text-lg text-muted mb-8 md:mb-12 leading-relaxed font-light">
                       {room.description}
                     </p>
 
                     <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 md:gap-y-6 mb-10 md:mb-12" aria-label={`${room.name} features`}>
                       {room.features.slice(0, 4).map((feature) => (
-                        <li key={feature} className="font-sans text-sm text-obsidian flex items-center group/item">
-                          <span className="w-1.5 h-1.5 bg-champagne/40 mr-4 md:group-hover/item:bg-champagne transition-all duration-300" aria-hidden="true" />
+                        <li key={feature} className="font-sans text-sm text-body flex items-center group/item">
+                          <span className="w-1.5 h-1.5 bg-accent/40 mr-4 md:group-hover/item:bg-accent transition-all duration-300" aria-hidden="true" />
                           {feature}
                         </li>
                       ))}
                     </ul>
 
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between border-t border-obsidian/10 pt-8 md:pt-10 gap-6 sm:gap-0">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between border-t border-dark/10 pt-8 md:pt-10 gap-6 sm:gap-0">
                       <div>
-                        <span className="block font-sans text-2xl md:text-3xl text-obsidian font-medium tracking-tight">
+                        <span className="block font-sans text-2xl md:text-3xl text-body font-medium tracking-tight">
                           ₹{(room.basePrice / 100).toLocaleString('en-IN')}
                         </span>
-                        <span className="block font-sans text-[10px] md:text-xs uppercase tracking-widest text-champagne mt-1 md:mt-2 font-semibold">
+                        <span className="block font-sans text-[10px] md:text-xs uppercase tracking-widest text-accent mt-1 md:mt-2 font-semibold">
                           per night + taxes
                         </span>
                       </div>
                       <Link
                         href={`/rooms/${room.slug}`}
-                        className="relative overflow-hidden px-8 py-4 bg-transparent border border-obsidian/20 text-obsidian font-sans text-xs uppercase tracking-widest font-medium md:hover:bg-obsidian md:hover:border-obsidian md:hover:text-alabaster transition-all duration-500 shadow-sm rounded-sm text-center w-full sm:w-auto min-h-[44px] flex items-center justify-center"
+                        className="relative overflow-hidden px-8 py-4 bg-transparent border border-dark/20 text-body font-sans text-xs uppercase tracking-widest font-medium md:hover:bg-dark md:hover:border-dark md:hover:text-page transition-all duration-500 shadow-sm rounded-sm text-center w-full sm:w-auto min-h-[44px] flex items-center justify-center"
                         aria-label={`View details for ${room.name}`}
                       >
                         View Details
