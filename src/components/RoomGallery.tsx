@@ -22,6 +22,7 @@ import {
 } from 'react';
 import Image from 'next/image';
 import type { RoomImage } from '@/data/images';
+import { getWrappedIndex, shouldAutoAdvance } from '@/utils/slideshowLogic';
 
 const GALLERY_INTERVAL_MS = 5000;
 const CROSSFADE_MS = 1000;
@@ -75,12 +76,12 @@ export function RoomGallery({
   }, []);
 
   const advance = useCallback(() => {
-    setCurrent((c) => (c + 1) % total);
+    setCurrent((c) => getWrappedIndex(c + 1, total));
   }, [total]);
 
-  // Auto-advance — only when visible, not paused, not reduced-motion, and more than 1 image
+  // Auto-advance
   useEffect(() => {
-    if (!isVisible || paused || reducedMotion || total <= 1) return;
+    if (!shouldAutoAdvance(isVisible, paused, reducedMotion, total)) return;
     timerRef.current = setTimeout(advance, GALLERY_INTERVAL_MS);
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
@@ -88,7 +89,7 @@ export function RoomGallery({
   }, [advance, current, isVisible, paused, reducedMotion, total]);
 
   const go = (index: number) => {
-    setCurrent(((index % total) + total) % total);
+    setCurrent(getWrappedIndex(index, total));
   };
 
   // Touch swipe (detail pages)

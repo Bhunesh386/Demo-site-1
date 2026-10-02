@@ -20,6 +20,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
+import { getWrappedIndex, shouldAutoAdvance } from '@/utils/slideshowLogic';
 import { heroSlides } from '@/data/images';
 
 const INTERVAL_MS = 6000;
@@ -51,23 +52,23 @@ export function HeroSlideshow() {
 
   const go = useCallback(
     (index: number) => {
-      setCurrent(((index % total) + total) % total);
+      setCurrent(getWrappedIndex(index, total));
     },
     [total],
   );
 
   const advance = useCallback(() => {
-    setCurrent((c) => (c + 1) % total);
+    setCurrent((c) => getWrappedIndex(c + 1, total));
   }, [total]);
 
-  // Auto-advance — disabled when reduced-motion is preferred
+  // Auto-advance
   useEffect(() => {
-    if (paused || reducedMotion) return;
+    if (!shouldAutoAdvance(true, paused, reducedMotion, total)) return;
     timerRef.current = setTimeout(advance, INTERVAL_MS);
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
     };
-  }, [advance, current, paused, reducedMotion]);
+  }, [advance, current, paused, reducedMotion, total]);
 
   // Pause when tab is hidden
   useEffect(() => {
