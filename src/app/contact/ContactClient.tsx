@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { contactLocationImage } from '@/data/images';
 
 const staggerContainer = {
   hidden: { opacity: 0 },
@@ -65,16 +66,16 @@ export function ContactClient() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd).replace(/</g, '\\u003c') }}
       />
 
-      <div className="pt-24 md:pt-32 pb-24 md:pb-40 relative overflow-hidden bg-alabaster">
-        <div className="absolute -left-32 md:-left-64 bottom-0 w-[400px] md:w-[800px] h-[400px] md:h-[800px] bg-champagne/5 rounded-full blur-[80px] md:blur-[120px] -z-10 pointer-events-none" />
+      <div className="pt-24 md:pt-32 pb-24 md:pb-40 relative overflow-hidden bg-page">
+        <div className="absolute -left-32 md:-left-64 bottom-0 w-[400px] md:w-[800px] h-[400px] md:h-[800px] bg-accent/5 rounded-full blur-[80px] md:blur-[120px] -z-10 pointer-events-none" />
 
         <div className="container mx-auto px-4 md:px-6 max-w-7xl">
           {/* ── Breadcrumb ── */}
           <nav aria-label="Breadcrumb" className="mb-8 pt-4">
-            <ol className="flex items-center gap-2 font-sans text-xs uppercase tracking-widest text-obsidian/50">
-              <li><Link href="/" className="md:hover:text-champagne transition-colors">Home</Link></li>
-              <li aria-hidden="true" className="text-obsidian/30">›</li>
-              <li className="text-champagne" aria-current="page">Contact</li>
+            <ol className="flex items-center gap-2 font-sans text-xs uppercase tracking-widest text-muted">
+              <li><Link href="/" className="md:hover:text-accent transition-colors">Home</Link></li>
+              <li aria-hidden="true" className="text-muted">›</li>
+              <li className="text-accent" aria-current="page">Contact</li>
             </ol>
           </nav>
 
@@ -82,40 +83,40 @@ export function ContactClient() {
             <motion.div variants={staggerContainer} initial="hidden" animate="show">
               <motion.h1
                 variants={fadeUp}
-                className="font-serif text-4xl md:text-7xl text-obsidian mb-6 md:mb-8 tracking-tight"
+                className="font-serif text-4xl md:text-7xl text-body mb-6 md:mb-8 tracking-tight"
               >
                 Get in Touch
               </motion.h1>
-              <motion.div variants={fadeUp} className="w-16 h-[1px] bg-champagne mb-8 md:mb-10 opacity-70" />
+              <motion.div variants={fadeUp} className="w-16 h-[1px] bg-accent mb-8 md:mb-10 opacity-70" />
               <motion.p
                 variants={fadeUp}
-                className="font-sans text-lg md:text-xl text-obsidian/70 mb-12 md:mb-16 font-light leading-relaxed max-w-lg"
+                className="font-sans text-lg md:text-xl text-muted mb-12 md:mb-16 font-light leading-relaxed max-w-lg"
               >
                 We look forward to welcoming you. Reach out for reservations, event inquiries, or
                 any special requests — our team responds within a few hours.
               </motion.p>
 
-              <motion.address variants={fadeUp} className="not-italic space-y-8 md:space-y-10 border-l border-champagne/30 pl-6 md:pl-8">
+              <motion.address variants={fadeUp} className="not-italic space-y-8 md:space-y-10 border-l border-accent/30 pl-6 md:pl-8">
                 <div>
-                  <h2 className="font-sans text-[10px] md:text-xs uppercase tracking-widest text-champagne mb-2 md:mb-3 font-semibold">Location</h2>
-                  <p className="font-sans text-base md:text-lg text-obsidian font-light">
+                  <h2 className="font-sans text-[10px] md:text-xs uppercase tracking-widest text-accent mb-2 md:mb-3 font-semibold">Location</h2>
+                  <p className="font-sans text-base md:text-lg text-body font-light">
                     149–150, Nai Sarak<br />
                     Jodhpur, Rajasthan 342001
                   </p>
                 </div>
                 <div>
-                  <h2 className="font-sans text-[10px] md:text-xs uppercase tracking-widest text-champagne mb-2 md:mb-3 font-semibold">Contact</h2>
-                  <p className="font-sans text-base md:text-lg text-obsidian font-light">
+                  <h2 className="font-sans text-[10px] md:text-xs uppercase tracking-widest text-accent mb-2 md:mb-3 font-semibold">Contact</h2>
+                  <p className="font-sans text-base md:text-lg text-body font-light">
                     <a
                       href="mailto:jodhpur@hotelratnawali.com"
-                      className="md:hover:text-champagne transition-colors"
+                      className="md:hover:text-accent transition-colors"
                     >
                       jodhpur@hotelratnawali.com
                     </a>
                     <br />
                     <a
                       href="tel:+919929040000"
-                      className="md:hover:text-champagne transition-colors"
+                      className="md:hover:text-accent transition-colors"
                     >
                       +91 99290-40000
                     </a>
@@ -125,20 +126,20 @@ export function ContactClient() {
 
               <motion.div
                 variants={fadeUp}
-                className="mt-12 md:mt-20 h-[30vh] md:h-72 rounded-sm border border-obsidian/5 flex items-center justify-center relative overflow-hidden group shadow-md"
+                className="mt-12 md:mt-20 h-[30vh] md:h-72 rounded-sm border border-dark/5 flex items-center justify-center relative overflow-hidden group shadow-md"
                 aria-label="Hotel location map placeholder"
               >
-                <span className="font-sans text-obsidian uppercase tracking-widest text-[10px] md:text-xs font-semibold z-10 bg-alabaster/95 px-4 md:px-6 py-2 md:py-3 backdrop-blur-md shadow-sm border border-champagne/20">
+                <span className="font-sans text-body uppercase tracking-widest text-[10px] md:text-xs font-semibold z-10 bg-page/95 px-4 md:px-6 py-2 md:py-3 backdrop-blur-md shadow-sm border border-accent/20">
                   149–150 Nai Sarak, Jodhpur
                 </span>
                 <Image
-                  src="/images/amenity-spa.jpg"
-                  alt="Aerial view of Hotel Ratnawali's surroundings in Jodhpur's Nai Sarak neighbourhood near the Clock Tower"
+                  src={contactLocationImage.src}
+                  alt={contactLocationImage.alt}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover opacity-90 transition-transform duration-[1.5s] ease-out md:group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-obsidian/10 md:group-hover:bg-transparent transition-colors duration-700" />
+                <div className="absolute inset-0 bg-dark/10 md:group-hover:bg-transparent transition-colors duration-700" />
               </motion.div>
             </motion.div>
 
@@ -147,7 +148,7 @@ export function ContactClient() {
               initial={{ opacity: 0, x: 30, filter: 'blur(10px)' }}
               animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="bg-white p-6 md:p-10 lg:p-16 rounded-sm shadow-xl shadow-obsidian/5 border border-transparent hover:border-champagne/20 transition-all duration-700 relative"
+              className="bg-surface p-6 md:p-10 lg:p-16 rounded-sm shadow-xl shadow-obsidian/5 border border-transparent hover:border-accent/20 transition-all duration-700 relative"
             >
               {submitted ? (
                 <motion.div
@@ -158,12 +159,12 @@ export function ContactClient() {
                   role="status"
                   aria-live="polite"
                 >
-                  <div className="w-16 h-16 border border-champagne/40 bg-champagne/5 rounded-full flex items-center justify-center mb-8 relative">
-                    <div className="absolute inset-0 rounded-full border border-champagne/30 animate-ping" aria-hidden="true" />
-                    <span className="text-champagne text-2xl font-light" aria-hidden="true">✓</span>
+                  <div className="w-16 h-16 border border-accent/40 bg-accent/5 rounded-full flex items-center justify-center mb-8 relative">
+                    <div className="absolute inset-0 rounded-full border border-accent/30 animate-ping" aria-hidden="true" />
+                    <span className="text-accent text-2xl font-light" aria-hidden="true">✓</span>
                   </div>
-                  <h3 className="font-serif text-2xl md:text-3xl text-obsidian mb-4">Request Sent</h3>
-                  <p className="font-sans text-base md:text-lg text-obsidian/70 font-light max-w-xs mx-auto">
+                  <h3 className="font-serif text-2xl md:text-3xl text-body mb-4">Request Sent</h3>
+                  <p className="font-sans text-base md:text-lg text-muted font-light max-w-xs mx-auto">
                     Our concierge team will be in touch within a few hours to confirm your reservation details.
                   </p>
                 </motion.div>
@@ -173,10 +174,10 @@ export function ContactClient() {
                   onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}
                   aria-label="Reservation request form"
                 >
-                  <h2 className="font-serif text-2xl md:text-3xl text-obsidian mb-8 md:mb-12">Reservation Request</h2>
+                  <h2 className="font-serif text-2xl md:text-3xl text-body mb-8 md:mb-12">Reservation Request</h2>
 
                   <div className="space-y-2 md:space-y-3 group">
-                    <label htmlFor="contact-name" className="font-sans text-[10px] md:text-xs uppercase tracking-widest text-obsidian/50 md:group-focus-within:text-champagne transition-colors font-semibold">
+                    <label htmlFor="contact-name" className="font-sans text-[10px] md:text-xs uppercase tracking-widest text-muted md:group-focus-within:text-accent transition-colors font-semibold">
                       Full Name
                     </label>
                     <input
@@ -184,12 +185,12 @@ export function ContactClient() {
                       required
                       type="text"
                       autoComplete="name"
-                      className="w-full border-b border-obsidian/20 py-2 md:py-3 bg-transparent font-sans text-obsidian text-base md:text-lg focus:outline-none focus:border-champagne transition-colors min-h-[44px] rounded-none"
+                      className="w-full bg-surface border border-divider px-4 py-2 md:py-3 rounded-sm font-sans text-body text-base md:text-lg focus:outline-none focus:border-accent transition-colors min-h-[44px] rounded-none"
                     />
                   </div>
 
                   <div className="space-y-2 md:space-y-3 group">
-                    <label htmlFor="contact-email" className="font-sans text-[10px] md:text-xs uppercase tracking-widest text-obsidian/50 md:group-focus-within:text-champagne transition-colors font-semibold">
+                    <label htmlFor="contact-email" className="font-sans text-[10px] md:text-xs uppercase tracking-widest text-muted md:group-focus-within:text-accent transition-colors font-semibold">
                       Email Address
                     </label>
                     <input
@@ -197,31 +198,31 @@ export function ContactClient() {
                       required
                       type="email"
                       autoComplete="email"
-                      className="w-full border-b border-obsidian/20 py-2 md:py-3 bg-transparent font-sans text-obsidian text-base md:text-lg focus:outline-none focus:border-champagne transition-colors min-h-[44px] rounded-none"
+                      className="w-full bg-surface border border-divider px-4 py-2 md:py-3 rounded-sm font-sans text-body text-base md:text-lg focus:outline-none focus:border-accent transition-colors min-h-[44px] rounded-none"
                     />
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                     <div className="space-y-2 md:space-y-3 group">
-                      <label htmlFor="contact-checkin" className="font-sans text-[10px] md:text-xs uppercase tracking-widest text-obsidian/50 md:group-focus-within:text-champagne transition-colors font-semibold">
+                      <label htmlFor="contact-checkin" className="font-sans text-[10px] md:text-xs uppercase tracking-widest text-muted md:group-focus-within:text-accent transition-colors font-semibold">
                         Check-in
                       </label>
                       <input
                         id="contact-checkin"
                         required
                         type="date"
-                        className="w-full border-b border-obsidian/20 py-2 md:py-3 bg-transparent font-sans text-obsidian text-base md:text-lg focus:outline-none focus:border-champagne transition-colors min-h-[44px] rounded-none appearance-none"
+                        className="w-full bg-surface border border-divider px-4 py-2 md:py-3 rounded-sm font-sans text-body text-base md:text-lg focus:outline-none focus:border-accent transition-colors min-h-[44px] rounded-none appearance-none"
                       />
                     </div>
                     <div className="space-y-2 md:space-y-3 group">
-                      <label htmlFor="contact-checkout" className="font-sans text-[10px] md:text-xs uppercase tracking-widest text-obsidian/50 md:group-focus-within:text-champagne transition-colors font-semibold">
+                      <label htmlFor="contact-checkout" className="font-sans text-[10px] md:text-xs uppercase tracking-widest text-muted md:group-focus-within:text-accent transition-colors font-semibold">
                         Check-out
                       </label>
                       <input
                         id="contact-checkout"
                         required
                         type="date"
-                        className="w-full border-b border-obsidian/20 py-2 md:py-3 bg-transparent font-sans text-obsidian text-base md:text-lg focus:outline-none focus:border-champagne transition-colors min-h-[44px] rounded-none appearance-none"
+                        className="w-full bg-surface border border-divider px-4 py-2 md:py-3 rounded-sm font-sans text-body text-base md:text-lg focus:outline-none focus:border-accent transition-colors min-h-[44px] rounded-none appearance-none"
                       />
                     </div>
                   </div>
@@ -229,7 +230,7 @@ export function ContactClient() {
                   <div className="pt-6 md:pt-10">
                     <button
                       type="submit"
-                      className="relative overflow-hidden w-full py-4 md:py-5 bg-obsidian text-alabaster font-sans text-[10px] md:text-xs font-semibold uppercase tracking-widest md:hover:bg-champagne transition-colors duration-500 shadow-md md:hover:shadow-champagne/30 rounded-sm min-h-[44px]"
+                      className="relative overflow-hidden w-full py-4 md:py-5 bg-dark text-page font-sans text-[10px] md:text-xs font-semibold uppercase tracking-widest md:hover:bg-accent transition-colors duration-500 shadow-md md:hover:shadow-champagne/30 rounded-sm min-h-[44px]"
                     >
                       Submit Request
                     </button>

@@ -104,3 +104,76 @@
   - *Acceptance Criteria*: All components scanned for inline `style={{}}` and replaced with Tailwind. `DNS-Mail-Records-Guide.md` created in root for SPF/DMARC.
   - *Skills*: `ponytail`, `perf-audit`, `git-hygiene`
   - *Commit*: `refactor: replace inline styles and add DNS guide [T-016]`
+
+## Booking Engine Flow
+
+### Phase 1: Routing & Global State Architecture (Completed)
+- **Routes:** 
+  - `/book`: The primary entry point for availability search and room selection.
+  - `/book/checkout`: The secure checkout and guest details form.
+  - `/book/confirmation`: The success page showing the booking reference.
+- **State Management:**
+  - Implement **Zustand** for a lightweight, performant global booking store that persists across route changes without React Context boilerplate.
+  - **State Shape:**
+    ```typescript
+    interface BookingState {
+      checkIn: Date | null;
+      checkOut: Date | null;
+      adults: number;
+      children: number;
+      selectedRoomId: string | null;
+      totalPrice: number;
+      setDates: (inDate: Date, outDate: Date) => void;
+      setGuests: (adults: number, children: number) => void;
+      selectRoom: (roomId: string, price: number) => void;
+      resetBooking: () => void;
+    }
+    ```
+- **Mock Data:**
+  - Create a JSON structure in `src/data/rooms.ts` to mock backend API responses:
+    ```json
+    [
+      {
+        "id": "deluxe-01",
+        "name": "Deluxe Room",
+        "pricePerNight": 4500,
+        "capacity": { "adults": 2, "children": 1 },
+        "image": "/images/2.jpg",
+        "amenities": ["King Bed", "City View", "Free WiFi", "Minibar"]
+      }
+    ]
+    ```
+
+### Phase 2: The Search & Availability Widget (UI) (Completed)
+- **Date Selection:** 
+  - Build a custom `DatePicker` component styled with Tailwind, leveraging a lightweight library like `react-day-picker` or `date-fns` for logic.
+  - **Constraints:** Enforce minimum 1-night stay, block all past dates, and prevent check-out dates from preceding check-in dates.
+- **Guest Selection:** 
+  - Design an elegant dropdown popover containing counter inputs (+/- buttons) for Adults (min 1, max 4) and Children (min 0, max 4).
+- **Action:** 
+  - A prominent "Check Availability" CTA button that evaluates the inputs and smoothly transitions the view to display available rooms.
+
+### Phase 3: Room Selection Interface (UI) (Completed)
+- **Layout:** 
+  - Design a responsive vertical list (mobile) and grid/list hybrid (desktop) to display the mock rooms that meet the search criteria.
+- **Card Details:** 
+  - Each room card will feature:
+    - A high-resolution thumbnail using Next.js `<Image>`.
+    - A bulleted list of premium amenities.
+    - The dynamic total price (calculated as `pricePerNight * nights`).
+    - A distinct "Select Room" button that updates the Zustand store and navigates to `/book/checkout`.
+
+### Phase 4: Checkout Form & Summary (UI) (Completed)
+- **Guest Details Form:** 
+  - Implement a secure, accessible form requesting First Name, Last Name, Email, and Phone Number.
+  - **Validation Strategy:** Utilize `react-hook-form` coupled with `zod` for robust, type-safe client-side validation and error messaging.
+- **Order Summary:** 
+  - A sticky sidebar (desktop) or top-level accordion (mobile) summarizing the reservation: Check-in/out dates, guest count, room name, nightly breakdown, taxes, and final total.
+- **Success State:** 
+  - Upon clicking "Confirm Reservation", transition to `/book/confirmation` (or a full-screen modal) displaying a mock Booking Reference Number, a "Thank You" message, and a button to return to the homepage.
+
+### Phase 5: Motion & Aesthetic Polish (Completed)
+- **Transitions:** 
+  - Use `framer-motion` `<AnimatePresence mode="wait">` to orchestrate smooth fade-and-slide page transitions between `/book`, `/book/checkout`, and `/book/confirmation`.
+- **Micro-interactions:** 
+  - Add staggered fade-ups for room cards, subtle hover scale effects on images, and smooth height animations for form validation errors to ensure a premium, app-like feel.

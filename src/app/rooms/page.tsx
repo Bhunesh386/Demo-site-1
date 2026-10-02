@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { RoomsClient } from "./RoomsClient";
+import { roomsPageOgImage } from "@/data/images";
 
 export const metadata: Metadata = {
   title: "Rooms & Accommodations — Boutique Stays in Jodhpur",
@@ -15,10 +16,10 @@ export const metadata: Metadata = {
     url: "https://hotelratnawalijodhpur.com/rooms",
     images: [
       {
-        url: "/images/room-deluxe.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Deluxe room at Hotel Ratnawali Jodhpur with Marwari wood accents and courtyard view",
+        url: roomsPageOgImage.url,
+        width: roomsPageOgImage.width,
+        height: roomsPageOgImage.height,
+        alt: roomsPageOgImage.alt,
       },
     ],
   },
