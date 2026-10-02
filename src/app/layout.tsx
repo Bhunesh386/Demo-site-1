@@ -3,6 +3,7 @@ import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
+import { ogImage } from "@/data/images";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -58,10 +59,10 @@ export const metadata: Metadata = {
       "A heritage-inspired boutique stay steps from the Clock Tower. Experience Marwari hospitality where history meets modern comfort in Jodhpur, Rajasthan.",
     images: [
       {
-        url: "/images/hero-main.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Hotel Ratnawali Jodhpur — heritage boutique hotel exterior with Blue City view",
+        url: ogImage.url,
+        width: ogImage.width,
+        height: ogImage.height,
+        alt: ogImage.alt,
       },
     ],
   },
