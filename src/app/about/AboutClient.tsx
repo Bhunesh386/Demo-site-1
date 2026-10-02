@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
+import { aboutGallery } from '@/data/images';
 
 const staggerContainer = {
   hidden: { opacity: 0 },
@@ -24,38 +25,19 @@ const leadership = [
     name: 'Rajendra Singh Rathore',
     role: 'Founder & Managing Director',
     img: '/images/about-team.jpg',
-    bio: 'Rajendra founded Hotel Ratnawali in 1987 with a single vision: to offer travellers an authentic window into Jodhpur\'s living heritage. With over 35 years in Rajasthani hospitality, he personally curates every restoration detail to ensure each guest feels the warmth of Marwari tradition.',
+    bio: "Rajendra founded Hotel Ratnawali in 1987 with a single vision: to offer travellers an authentic window into Jodhpur's living heritage. With over 35 years in Rajasthani hospitality, he personally curates every restoration detail to ensure each guest feels the warmth of Marwari tradition.",
   },
   {
     name: 'Priya Rathore',
     role: 'General Manager & Head of Guest Experience',
     img: '/images/about-team.jpg',
-    bio: 'A hospitality graduate from IHM Jodhpur and the second generation to steward Ratnawali, Priya oversees operations, team training, and the guest journey from first inquiry to fond farewell. She introduced the hotel\'s signature hand-crafted welcome ritual now beloved by returning guests.',
+    bio: "A hospitality graduate from IHM Jodhpur and the second generation to steward Ratnawali, Priya oversees operations, team training, and the guest journey from first inquiry to fond farewell. She introduced the hotel's signature hand-crafted welcome ritual now beloved by returning guests.",
   },
   {
     name: 'Vikram Solanki',
     role: 'Head of Interiors & Heritage Conservation',
     img: '/images/about-team.jpg',
-    bio: 'Vikram is a conservation architect with credentials from the School of Planning and Architecture, New Delhi. He leads the ongoing restoration of the property\'s original jharokha screens, carved sandstone facades, and brass fixture collection — preserving Jodhpur\'s architectural identity for future generations.',
-  },
-];
-
-const galleryImages = [
-  {
-    src: '/images/hero-secondary.jpg',
-    alt: 'Ornate carved sandstone jharokha window at Hotel Ratnawali Jodhpur overlooking the Blue City rooftops',
-  },
-  {
-    src: '/images/amenity-pool.jpg',
-    alt: 'Rooftop pool at Hotel Ratnawali with panoramic view of Mehrangarh Fort and Jodhpur\'s blue-washed skyline',
-  },
-  {
-    src: '/images/amenity-lounge.jpg',
-    alt: 'Heritage lounge at Hotel Ratnawali Jodhpur — hand-blocked fabric cushions and traditional Rajasthani low seating',
-  },
-  {
-    src: '/images/amenity-dining.jpg',
-    alt: 'Dining area at Hotel Ratnawali with traditional Marwari thali service and warm terracotta decor',
+    bio: "Vikram is a conservation architect with credentials from the School of Planning and Architecture, New Delhi. He leads the ongoing restoration of the property's original jharokha screens, carved sandstone facades, and brass fixture collection — preserving Jodhpur's architectural identity for future generations.",
   },
 ];
 
@@ -141,11 +123,11 @@ export function AboutClient() {
               {/* Left Column */}
               <div className="space-y-6 md:space-y-12">
                 <motion.div variants={imageReveal} className="relative h-[40vh] md:h-[650px] overflow-hidden group shadow-lg rounded-sm">
-                  <Image src={galleryImages[0].src} alt={galleryImages[0].alt} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-[1.5s] ease-out md:group-hover:scale-105" />
+                  <Image src={aboutGallery[0].src} alt={aboutGallery[0].alt} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-[1.5s] ease-out md:group-hover:scale-105" />
                   <div className="absolute inset-0 bg-obsidian/10 md:group-hover:bg-transparent transition-colors duration-700" />
                 </motion.div>
                 <motion.div variants={imageReveal} className="relative h-[30vh] md:h-[450px] overflow-hidden group shadow-lg rounded-sm">
-                  <Image src={galleryImages[1].src} alt={galleryImages[1].alt} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-[1.5s] ease-out md:group-hover:scale-105" />
+                  <Image src={aboutGallery[1].src} alt={aboutGallery[1].alt} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-[1.5s] ease-out md:group-hover:scale-105" />
                   <div className="absolute inset-0 bg-obsidian/10 md:group-hover:bg-transparent transition-colors duration-700" />
                 </motion.div>
               </div>
@@ -153,11 +135,11 @@ export function AboutClient() {
               {/* Right Column (Offset) */}
               <div className="space-y-6 md:space-y-12 pt-0 md:pt-32">
                 <motion.div variants={imageReveal} className="relative h-[30vh] md:h-[450px] overflow-hidden group shadow-lg rounded-sm">
-                  <Image src={galleryImages[2].src} alt={galleryImages[2].alt} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-[1.5s] ease-out md:group-hover:scale-105" />
+                  <Image src={aboutGallery[2].src} alt={aboutGallery[2].alt} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-[1.5s] ease-out md:group-hover:scale-105" />
                   <div className="absolute inset-0 bg-obsidian/10 md:group-hover:bg-transparent transition-colors duration-700" />
                 </motion.div>
                 <motion.div variants={imageReveal} className="relative h-[40vh] md:h-[650px] overflow-hidden group shadow-lg rounded-sm">
-                  <Image src={galleryImages[3].src} alt={galleryImages[3].alt} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-[1.5s] ease-out md:group-hover:scale-105" />
+                  <Image src={aboutGallery[3].src} alt={aboutGallery[3].alt} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-[1.5s] ease-out md:group-hover:scale-105" />
                   <div className="absolute inset-0 bg-obsidian/10 md:group-hover:bg-transparent transition-colors duration-700" />
                 </motion.div>
               </div>
